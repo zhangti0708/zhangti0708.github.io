@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JAVA 设计模式 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出 命令模式123456789101112131415161718192021222324252627282930313233343536373839404142434">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA 设计模式">
+<meta property="og:url" content="http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="一只咸鱼">
+<meta property="og:description" content="设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出 命令模式123456789101112131415161718192021222324252627282930313233343536373839404142434">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-05T15:32:54.000Z">
+<meta property="article:modified_time" content="2020-04-05T15:52:49.604Z">
+<meta property="article:author" content="Mr.Zhang">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Zhang</h5>
+          <a href="mailto:zhangticcc@163.com" title="zhangticcc@163.com" class="mail">zhangticcc@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangti0708" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/5392412243" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/weixin_40902527" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JAVA 设计模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JAVA 设计模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-05T15:32:54.000Z" itemprop="datePublished" class="page-time">
+  2020-04-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#命令模式"><span class="post-toc-number">1.</span> <span class="post-toc-text">命令模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#装饰模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">装饰模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#构建者模式"><span class="post-toc-number">3.</span> <span class="post-toc-text">构建者模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组合模式"><span class="post-toc-number">4.</span> <span class="post-toc-text">组合模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#程序开发遵守原则"><span class="post-toc-number">5.</span> <span class="post-toc-text">程序开发遵守原则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-开闭原则"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">1.开闭原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-里氏替换原则"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">2.里氏替换原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-依赖倒置原则"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">3.依赖倒置原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-单一职责原则"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">4.单一职责原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-接口隔离原则"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">5.接口隔离原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-迪米特原则"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">6.迪米特原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-合成复用原则定义："><span class="post-toc-number">5.7.</span> <span class="post-toc-text">7.合成复用原则定义：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#23种设计模式"><span class="post-toc-number">6.</span> <span class="post-toc-text">23种设计模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">* 23种设计模式以及设计原则</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-设计模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JAVA 设计模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-05 23:32:54" datetime="2020-04-05T15:32:54.000Z"  itemprop="datePublished">2020-04-05</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>设计模式（Design pattern）代表了最佳的实践，通常被有经验的面向对象的软件开发人员所采用。设计模式是软件开发人员在软件开发过程中面临的一般问题的解决方案。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出</p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">package com.designpatter.demo;</span><br><span class="line"> </span><br><span class="line">/****</span><br><span class="line"> * 设计模式</span><br><span class="line"> *</span><br><span class="line"> * 命令模式</span><br><span class="line"> * 命令（Command）模式的定义如下：将一个请求封装为一个对象，使发出请求的责任和执行请求的责任分割开。这样两者之间通过命令对象进行沟通，</span><br><span class="line"> * 这样方便将命令对象进行储存、传递、调用、增加与管理。</span><br><span class="line"> *</span><br><span class="line"> * 命令模式的主要优点如下。</span><br><span class="line"> * 降低系统的耦合度。命令模式能将调用操作的对象与实现该操作的对象解耦。</span><br><span class="line"> * 增加或删除命令非常方便。采用命令模式增加与删除命令不会影响其他类，它满足“开闭原则”，对扩展比较灵活。</span><br><span class="line"> * 可以实现宏命令。命令模式可以与组合模式结合，将多个命令装配成一个组合命令，即宏命令。</span><br><span class="line"> * 方便实现 Undo 和 Redo 操作。命令模式可以与后面介绍的备忘录模式结合，实现命令的撤销与恢复。</span><br><span class="line"> *</span><br><span class="line"> * 其缺点是：可能产生大量具体命令类。因为计对每一个具体操作都需要设计一个具体命令类，这将增加系统的复杂性。</span><br><span class="line"> */</span><br><span class="line">public class CommandPatterDemo &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Context <span class="built_in">command</span> = new Context(new <span class="built_in">read</span>());</span><br><span class="line">        command.execute();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public interface Command &#123;</span><br><span class="line">        void execute();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static class <span class="built_in">read</span> implements Command&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void <span class="function"><span class="title">execute</span></span>() &#123;</span><br><span class="line">            System.out.println(<span class="string">"开始读取数据"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static class copy implements Command&#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void <span class="function"><span class="title">execute</span></span>() &#123;</span><br><span class="line">            System.out.println(<span class="string">"开始复制数据"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static class Context&#123;</span><br><span class="line">        private  Command <span class="built_in">command</span>;</span><br><span class="line"> </span><br><span class="line">        public Context(Command <span class="built_in">command</span>) &#123;</span><br><span class="line">            this.command = <span class="built_in">command</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public void <span class="function"><span class="title">execute</span></span>()&#123;</span><br><span class="line">            this.command.execute();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">package com.designpatter.demo;</span><br><span class="line"> </span><br><span class="line">/**</span><br><span class="line"> * 装饰模式</span><br><span class="line"> * </span><br><span class="line"> * 介绍其适用的应用场景，装饰模式通常在以下几种情况使用。</span><br><span class="line"> * 当需要给一个现有类添加附加职责，而又不能采用生成子类的方法进行扩充时。例如，该类被隐藏或者该类是终极类或者采用继承方式会产生大量的子类。</span><br><span class="line"> * 当需要通过对现有的一组基本功能进行排列组合而产生非常多的功能时，采用继承关系很难实现，而采用装饰模式却很好实现。</span><br><span class="line"> * 当对象的功能要求可以动态地添加，也可以再动态地撤销时。</span><br><span class="line"> *</span><br><span class="line"> * 装饰模式在 Java 语言中的最著名的应用莫过于 Java I/O 标准库的设计了。例如，InputStream 的子类 FilterInputStream，</span><br><span class="line"> * OutputStream 的子类 FilterOutputStream，Reader 的子类 BufferedReader 以及 FilterReader，还有 Writer 的子类 BufferedWriter、</span><br><span class="line"> * FilterWriter 以及 PrintWriter 等，它们都是抽象装饰类。</span><br><span class="line"> * */</span><br><span class="line">public class DecoratePatternDemo &#123;</span><br><span class="line"> </span><br><span class="line">        public static void main(String[] args) &#123;</span><br><span class="line">            SuperPerson  superPerson = new SuperPerson(new Person());</span><br><span class="line">            superPerson.eat();</span><br><span class="line">        &#125;</span><br><span class="line">        static class Person&#123;</span><br><span class="line">            public void <span class="function"><span class="title">eat</span></span>()&#123;</span><br><span class="line">                System.out.println(<span class="string">"吃饭"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        static class SuperPerson&#123;</span><br><span class="line">            private Person person;</span><br><span class="line"> </span><br><span class="line">            public SuperPerson(Person person) &#123;</span><br><span class="line">                this.person = person;</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">            public void <span class="function"><span class="title">eat</span></span>()&#123;</span><br><span class="line">                System.out.println(<span class="string">"喝两口"</span>);</span><br><span class="line">                this.person.eat();</span><br><span class="line">                System.out.println(<span class="string">"抽两根"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="构建者模式"><a href="#构建者模式" class="headerlink" title="构建者模式"></a>构建者模式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">package com.designpatter.demo;</span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * 建造者（Builder）模式的定义：指将一个复杂对象的构造与它的表示分离，使同样的构建过程可以创建不同的表示，这样的设计模式被称为建造者模式。</span><br><span class="line"> * 它是将一个复杂的对象分解为多个简单的对象，然后一步一步构建而成。它将变与不变相分离，即产品的组成部分是不变的，但每一部分是可以灵活选择的。</span><br><span class="line"> *</span><br><span class="line"> * 该模式的主要优点如下：</span><br><span class="line"> * 各个具体的建造者相互独立，有利于系统的扩展。</span><br><span class="line"> * 客户端不必知道产品内部组成的细节，便于控制细节风险。</span><br><span class="line"> *</span><br><span class="line"> * 其缺点如下：</span><br><span class="line"> * 产品的组成部分必须相同，这限制了其使用范围。</span><br><span class="line"> * 如果产品的内部变化复杂，该模式会增加很多的建造者类。</span><br><span class="line"> *</span><br><span class="line"> * 建造者（Builder）模式和工厂模式的关注点不同：建造者模式注重零部件的组装过程，而工厂方法模式更注重零部件的创建过程，但两者可以结合使用。</span><br><span class="line"> * */</span><br><span class="line">public class WithoutPatternDemo &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Student student = new ConCreateStudent()</span><br><span class="line">                .setSpeak1(<span class="string">"test1"</span>)</span><br><span class="line">                .setSpeak2(<span class="string">"test2"</span>)</span><br><span class="line">                .setSpeak3(<span class="string">"test3"</span>)</span><br><span class="line">                .build();</span><br><span class="line"> </span><br><span class="line">        System.out.println(student);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static class Student&#123;</span><br><span class="line">        private String speak1;</span><br><span class="line">        private String speak2;</span><br><span class="line">        private String speak3;</span><br><span class="line"> </span><br><span class="line">        public void setSpeak1(String speak1) &#123;</span><br><span class="line">            this.speak1 = speak1;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public void setSpeak2(String speak2) &#123;</span><br><span class="line">            this.speak2 = speak2;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public void setSpeak3(String speak3) &#123;</span><br><span class="line">            this.speak3 = speak3;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public String <span class="function"><span class="title">getSpeak1</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> speak1;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public String <span class="function"><span class="title">getSpeak2</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> speak2;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public String <span class="function"><span class="title">getSpeak3</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> speak3;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public String <span class="function"><span class="title">toString</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">"Student&#123;"</span> +</span><br><span class="line">                    <span class="string">"speak1='"</span> + speak1 + <span class="string">'\'</span><span class="string">' +</span></span><br><span class="line"><span class="string">                    ", speak2='</span><span class="string">" + speak2 + '\'' +</span></span><br><span class="line"><span class="string">                    "</span>, speak3=<span class="string">'" + speak3 + '</span>\<span class="string">''</span> +</span><br><span class="line">                    <span class="string">'&#125;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public interface Buidler&#123;</span><br><span class="line">        Buidler setSpeak1(String speak1);</span><br><span class="line">        Buidler setSpeak2(String speak2);</span><br><span class="line">        Buidler setSpeak3(String speak3);</span><br><span class="line">        Student build();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static class ConCreateStudent implements Buidler &#123;</span><br><span class="line">        Student student = new Student();</span><br><span class="line">        @Override</span><br><span class="line">        public Buidler setSpeak1(String speak1) &#123;</span><br><span class="line">            System.out.println(<span class="string">"复杂的逻辑判断"</span>);</span><br><span class="line">            student.setSpeak1(speak1);</span><br><span class="line">            <span class="built_in">return</span> this;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public Buidler setSpeak2(String speak2) &#123;</span><br><span class="line">            System.out.println(<span class="string">"复杂的逻辑判断"</span>);</span><br><span class="line">            student.setSpeak2(speak2);</span><br><span class="line">            <span class="built_in">return</span> this;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public Buidler setSpeak3(String speak3) &#123;</span><br><span class="line">            System.out.println(<span class="string">"复杂的逻辑判断"</span>);</span><br><span class="line">            student.setSpeak3(speak3);</span><br><span class="line">            <span class="built_in">return</span> this;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public Student <span class="function"><span class="title">build</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> student;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">package com.designpatter.demo;</span><br><span class="line"> </span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line">/**</span><br><span class="line"> * 组合模式的主要优点有：</span><br><span class="line"> * 组合模式使得客户端代码可以一致地处理单个对象和组合对象，无须关心自己处理的是单个对象，还是组合对象，这简化了客户端代码；</span><br><span class="line"> * 更容易在组合体内加入新的对象，客户端不会因为加入了新的对象而更改源代码，满足“开闭原则”；</span><br><span class="line"> *</span><br><span class="line"> * 其主要缺点是：</span><br><span class="line"> * 设计较复杂，客户端需要花更多时间理清类之间的层次关系；</span><br><span class="line"> * 不容易限制容器中的构件；</span><br><span class="line"> * 不容易用继承的方法来增加构件的新功能；</span><br><span class="line"> * */</span><br><span class="line">public class WhihoutPatternDemo &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"> </span><br><span class="line">        Department coreDep = new Department(<span class="string">"主部门"</span>);</span><br><span class="line"> </span><br><span class="line">        Department subDep1 = new Department(<span class="string">"子部门1"</span>);</span><br><span class="line">        Department subDep2 = new Department(<span class="string">"子部门2"</span>);</span><br><span class="line"> </span><br><span class="line">        Department leafDep1 = new Department(<span class="string">"叶子部门1"</span>);</span><br><span class="line">        Department leafDep2 = new Department(<span class="string">"叶子部门2"</span>);</span><br><span class="line">        Department leafDep3 = new Department(<span class="string">"叶子部门3"</span>);</span><br><span class="line"> </span><br><span class="line">        subDep1.child.add(leafDep1);</span><br><span class="line">        subDep2.child.add(leafDep2);</span><br><span class="line">        subDep2.child.add(leafDep3);</span><br><span class="line">        coreDep.child.add(subDep1);</span><br><span class="line">        coreDep.child.add(subDep2);</span><br><span class="line"> </span><br><span class="line">        coreDep.remove();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    static class Department&#123;</span><br><span class="line">        private String name;</span><br><span class="line">        private List&lt;Department&gt; child = new ArrayList&lt;Department&gt;();</span><br><span class="line"> </span><br><span class="line">        public Department(String name) &#123;</span><br><span class="line">            this.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public String <span class="function"><span class="title">getName</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line">        public List&lt;Department&gt; <span class="function"><span class="title">getChild</span></span>() &#123;</span><br><span class="line">            <span class="built_in">return</span> child;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public void setName(String name) &#123;</span><br><span class="line">            this.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        public void setChild(List&lt;Department&gt; child) &#123;</span><br><span class="line">            this.child = child;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        void <span class="function"><span class="title">remove</span></span>()&#123;</span><br><span class="line">            <span class="keyword">if</span>(this.child.size() &gt; 0)&#123;</span><br><span class="line">                <span class="keyword">for</span>(Department department:this.child)&#123;</span><br><span class="line">                    department.remove();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"删除"</span>+name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="程序开发遵守原则"><a href="#程序开发遵守原则" class="headerlink" title="程序开发遵守原则"></a>程序开发遵守原则</h2><h3 id="1-开闭原则"><a href="#1-开闭原则" class="headerlink" title="1.开闭原则"></a>1.开闭原则</h3><p>定义：<br>当应用的需求改变时，在不修改软件实体的源代码或者二进制代码的前提下，可以扩展模块的功能，使其满足新的需求。</p>
+<p>作用：<br>开闭原则是面向对象程序设计的终极目标，它使软件实体拥有一定的适应性和灵活性的同时具备稳定性和延续性。具体来说，其作用如下。</p>
+<p>对软件测试的影响软件遵守开闭原则的话，软件测试时只需要对扩展的代码进行测试就可以了，因为原有的测试代码仍然能够正常运行。<br>可以提高代码的可复用性粒度越小，被复用的可能性就越大；在面向对象的程序设计中，根据原子和抽象编程可以提高代码的可复用性。<br>可以提高软件的可维护性遵守开闭原则的软件，其稳定性高和延续性强，从而易于扩展和维护。<br>实现：<br>可以通过“抽象约束、封装变化”来实现开闭原则，即通过接口或者抽象类为软件实体定义一个相对稳定的抽象层，而将相同的可变因素封装在相同的具体实现类中。</p>
+<h3 id="2-里氏替换原则"><a href="#2-里氏替换原则" class="headerlink" title="2.里氏替换原则"></a>2.里氏替换原则</h3><p>定义：</p>
+<p>里氏替换原则主要阐述了有关继承的一些原则，也就是什么时候应该使用继承，什么时候不应该使用继承，以及其中蕴含的原理。里氏替换原是继承复用的基础，它反映了基类与子类之间的关系，是对开闭原则的补充，是对实现抽象化的具体步骤的规范。</p>
+<p>作用：</p>
+<p> 里氏替换原则是实现开闭原则的重要方式之一。<br> 它克服了继承中重写父类造成的可复用性变差的缺点。<br> 它是动作正确性的保证。即类的扩展不会给已有的系统引入新的错误，降低了代码出错的可能性。<br>实现：</p>
+<p>里氏替换原则通俗来讲就是：子类可以扩展父类的功能，但不能改变父类原有的功能。也就是说：子类继承父类时，除添加新的方法完成新增功能外，尽量不要重写父类的方法。<br>如果通过重写父类的方法来完成新的功能，这样写起来虽然简单，但是整个继承体系的可复用性会比较差，特别是运用多态比较频繁时，程序运行出错的概率会非常大。<br>如果程序违背了里氏替换原则，则继承类的对象在基类出现的地方会出现运行错误。这时其修正方法是：取消原来的继承关系，重新设计它们之间的关系。</p>
+<h3 id="3-依赖倒置原则"><a href="#3-依赖倒置原则" class="headerlink" title="3.依赖倒置原则"></a>3.依赖倒置原则</h3><p>定义：<br>依赖倒置原则的原始定义为：高层模块不应该依赖低层模块，两者都应该依赖其抽象；抽象不应该依赖细节，细节应该依赖抽象（High level modules shouldnot depend upon low level modules.Both should depend upon abstractions.Abstractions should not depend upon details. Details should depend upon abstractions）。其核心思想是：要面向接口编程，不要面向实现编程。</p>
+<p>依赖倒置原则是实现开闭原则的重要途径之一，它降低了客户与实现模块之间的耦合。</p>
+<p>作用：</p>
+<p>  依赖倒置原则可以降低类间的耦合性。<br>  依赖倒置原则可以提高系统的稳定性。<br>  依赖倒置原则可以减少并行开发引起的风险。<br>  依赖倒置原则可以提高代码的可读性和可维护性。<br>实现：</p>
+<p>  每个类尽量提供接口或抽象类，或者两者都具备。<br>  变量的声明类型尽量是接口或者是抽象类。<br>  任何类都不应该从具体类派生。<br>  使用继承时尽量遵循里氏替换原则。</p>
+<h3 id="4-单一职责原则"><a href="#4-单一职责原则" class="headerlink" title="4.单一职责原则"></a>4.单一职责原则</h3><p> 定义：<br>一个职责的变化可能会削弱或者抑制这个类实现其他职责的能力；<br>当客户端需要该对象的某一个职责时，不得不将其他不需要的职责全都包含进来，从而造成冗余代码或代码的浪费。</p>
+<p>作用：</p>
+<p>  降低类的复杂度。一个类只负责一项职责，其逻辑肯定要比负责多项职责简单得多。<br>  提高类的可读性。复杂性降低，自然其可读性会提高。<br>  提高系统的可维护性。可读性提高，那自然更容易维护了。<br>  变更引起的风险降低。变更是必然的，如果单一职责原则遵守得好，当修改一个功能时，可以显著降低对其   他功能的影响<br>实现:<br>单一职责原则是最简单但又最难运用的原则，需要设计人员发现类的不同职责并将其分离，再封装到不同的类或模块中。而发现类的多重职责需要设计人员具有较强的分析设计能力和相关重构经验。下面以大学学生工作管理程序为例介绍单一职责原则的应用.</p>
+<h3 id="5-接口隔离原则"><a href="#5-接口隔离原则" class="headerlink" title="5.接口隔离原则"></a>5.接口隔离原则</h3><p>定义：</p>
+<p> 单一职责原则注重的是职责，而接口隔离原则注重的是对接口依赖的隔离。<br> 单一职责原则主要是约束类，它针对的是程序中的实现和细节；接口隔离原则主要约束接口，主要针对抽象和程序整体框架的构建。<br>作用：</p>
+<p> 将臃肿庞大的接口分解为多个粒度小的接口，可以预防外来变更的扩散，提高系统的灵活性和可维护性。<br> 接口隔离提高了系统的内聚性，减少了对外交互，降低了系统的耦合性。<br> 如果接口的粒度大小定义合理，能够保证系统的稳定性；但是，如果定义过小，则会造成接口数量过多，使设计复杂化；如果定义太大，灵活性降低，无法提供定制服务，给整体项目带来无法预料的风险。<br> 使用多个专门的接口还能够体现对象的层次，因为可以通过接口的继承，实现对总接口的定义。<br> 能减少项目工程中的代码冗余。过大的大接口里面通常放置许多不用的方法，当实现这个接口的时候，被迫设计冗余的代码。<br>实现：</p>
+<p> 接口尽量小，但是要有限度。一个接口只服务于一个子模块或业务逻辑。<br> 为依赖接口的类定制服务。只提供调用者需要的方法，屏蔽不需要的方法。<br> 了解环境，拒绝盲从。每个项目或产品都有选定的环境因素，环境不同，接口拆分的标准就不同深入了解业务逻辑。<br> 提高内聚，减少对外交互。使接口用最少的方法去完成最多的事情。</p>
+<h3 id="6-迪米特原则"><a href="#6-迪米特原则" class="headerlink" title="6.迪米特原则"></a>6.迪米特原则</h3><p> 定义：<br>如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用。其目的是降低类之间的耦合度，提高模块的相对独立性。</p>
+<p>作用：</p>
+<p>  降低了类之间的耦合度，提高了模块的相对独立性。<br>  由于亲合度降低，从而提高了类的可复用率和系统的扩展性。<br>实现：</p>
+<p>  在类的划分上，应该创建弱耦合的类。类与类之间的耦合越弱，就越有利于实现可复用的目标。<br>  在类的结构设计上，尽量降低类成员的访问权限。<br>  在类的设计上，优先考虑将一个类设置成不变类。<br>  在对其他类的引用上，将引用其他对象的次数降到最低。<br>  不暴露类的属性成员，而应该提供相应的访问器（set 和 get 方法）。<br>  谨慎使用序列化（Serializable）功能。</p>
+<h3 id="7-合成复用原则定义："><a href="#7-合成复用原则定义：" class="headerlink" title="7.合成复用原则定义："></a>7.合成复用原则定义：</h3><p>它要求在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现。<br>如果要使用继承关系，则必须严格遵循里氏替换原则。合成复用原则同里氏替换原则相辅相成的，两者都是开闭原则的具体实现规范。<br>作用：</p>
+<p>  它维持了类的封装性。因为成分对象的内部细节是新对象看不见的，所以这种复用又称为“黑箱”复用。<br>  新旧类之间的耦合度低。这种复用所需的依赖较少，新对象存取成分对象的唯一方法是通过成分对象的接口。<br>  复用的灵活性高。这种复用可以在运行时动态进行，新对象可以动态地引用与成分对象类型相同的对象。<br>实现：<br>  合成复用原则是通过将已有的对象纳入新对象中，作为新对象的成员对象来实现的，新对象可以调用已有对象的功能，从而达到复用</p>
+<h2 id="23种设计模式"><a href="#23种设计模式" class="headerlink" title="23种设计模式"></a>23种设计模式</h2>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  单例（Singleton）模式：某个类只能生成一个实例，该类提供了一个全局访问点供外部获取该实例，其拓展是有限多例模式。</span><br><span class="line">原型（Prototype）模式：将一个对象作为原型，通过对其进行复制而克隆出多个和原型类似的新实例。</span><br><span class="line">工厂方法（Factory Method）模式：定义一个用于创建产品的接口，由子类决定生产什么产品。</span><br><span class="line">抽象工厂（AbstractFactory）模式：提供一个创建产品族的接口，其每个子类可以生产一系列相关的产品。</span><br><span class="line">建造者（Builder）模式：将一个复杂对象分解成多个相对简单的部分，然后根据不同需要分别创建它们，最后构建成该复杂对象。</span><br><span class="line">代理（Proxy）模式：为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性。</span><br><span class="line">适配器（Adapter）模式：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类能一起工作。</span><br><span class="line">桥接（Bridge）模式：将抽象与实现分离，使它们可以独立变化。它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</span><br><span class="line">装饰（Decorator）模式：动态的给对象增加一些职责，即增加其额外的功能。</span><br><span class="line">外观（Facade）模式：为多个复杂的子系统提供一个一致的接口，使这些子系统更加容易被访问。</span><br><span class="line">享元（Flyweight）模式：运用共享技术来有效地支持大量细粒度对象的复用。</span><br><span class="line">组合（Composite）模式：将对象组合成树状层次结构，使用户对单个对象和组合对象具有一致的访问性。</span><br><span class="line">模板方法（TemplateMethod）模式：定义一个操作中的算法骨架，而将算法的一些步骤延迟到子类中，使得子类可以不改变该算法结构的情况下重定义该算法的某些特定步骤。</span><br><span class="line">策略（Strategy）模式：定义了一系列算法，并将每个算法封装起来，使它们可以相互替换，且算法的改变不会影响使用算法的客户。</span><br><span class="line">命令（Command）模式：将一个请求封装为一个对象，使发出请求的责任和执行请求的责任分割开。</span><br><span class="line">职责链（Chain of Responsibility）模式：把请求从链中的一个对象传到下一个对象，直到请求被响应为止。通过这种方式去除对象之间的耦合。</span><br><span class="line">状态（State）模式：允许一个对象在其内部状态发生改变时改变其行为能力。</span><br><span class="line">观察者（Observer）模式：多个对象间存在一对多关系，当一个对象发生改变时，把这种改变通知给其他多个对象，从而影响其他对象的行为。</span><br><span class="line">中介者（Mediator）模式：定义一个中介对象来简化原有对象之间的交互关系，降低系统中对象间的耦合度，使原有对象之间不必相互了解。</span><br><span class="line">迭代器（Iterator）模式：提供一种方法来顺序访问聚合对象中的一系列数据，而不暴露聚合对象的内部表示。</span><br><span class="line">访问者（Visitor）模式：在不改变集合元素的前提下，为一个集合中的每个元素提供多种访问方式，即每个元素有多个访问者对象访问。</span><br><span class="line">备忘录（Memento）模式：在不破坏封装性的前提下，获取并保存一个对象的内部状态，以便以后恢复它。</span><br><span class="line">解释器（Interpreter）模式：提供如何定义语言的文法，以及对语言句子的解释方法，即解释器。</span><br></pre></td></tr></table></figure>
+
+<p><h3><a href="https://www.runoob.com/design-pattern/design-pattern-tutorial.html" target="_blank" rel="nofollow noopener">* 23种设计模式以及设计原则</a></h3></p>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-05T15:52:49.604Z" itemprop="dateUpdated">2020-04-05 23:52:49</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_blank" rel="external">http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Mr.Zhang">
+            Mr.Zhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/&title=《JAVA 设计模式》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/&title=《JAVA 设计模式》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JAVA 设计模式》 — 一只咸鱼&url=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/05/JAVA-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JAVA 设计模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mr.Zhang &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/&title=《JAVA 设计模式》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/&title=《JAVA 设计模式》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JAVA 设计模式》 — 一只咸鱼&url=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
