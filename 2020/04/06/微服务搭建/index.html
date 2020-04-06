@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>微服务搭建 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="微服务微服务化的核心就是将传统的一站式应用，根据业务拆分成一个一个的服务，彻底去掉耦合，每一个微服务提供单个业务功能，一个服务只做一件事。从技术角度讲就是一种小而独立的处理过程，类似与进程的概念，能够自行单独启动或销毁，可以拥有自己独立的数据库 微服务框架:spring -cloud1234567891011121314Spring Cloud是一个完整的微服务解决方案，它提供分布式情况下的各种解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微服务搭建">
+<meta property="og:url" content="http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="一只咸鱼">
+<meta property="og:description" content="微服务微服务化的核心就是将传统的一站式应用，根据业务拆分成一个一个的服务，彻底去掉耦合，每一个微服务提供单个业务功能，一个服务只做一件事。从技术角度讲就是一种小而独立的处理过程，类似与进程的概念，能够自行单独启动或销毁，可以拥有自己独立的数据库 微服务框架:spring -cloud1234567891011121314Spring Cloud是一个完整的微服务解决方案，它提供分布式情况下的各种解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190329161843210.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190319144620998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190319160322464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190329163718292.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190329164215385.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190329170326124.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190329171440613.png">
+<meta property="article:published_time" content="2020-04-06T03:08:53.000Z">
+<meta property="article:modified_time" content="2020-04-06T04:09:40.246Z">
+<meta property="article:author" content="Mr.Zhang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190329161843210.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+    
+        <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Zhang</h5>
+          <a href="mailto:zhangticcc@163.com" title="zhangticcc@163.com" class="mail">zhangticcc@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangti0708" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/5392412243" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/weixin_40902527" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">微服务搭建</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">微服务搭建</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-06T03:08:53.000Z" itemprop="datePublished" class="page-time">
+  2020-04-06
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#微服务"><span class="post-toc-number">1.</span> <span class="post-toc-text">微服务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#微服务框架-spring-cloud"><span class="post-toc-number">2.</span> <span class="post-toc-text">微服务框架:spring -cloud</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基于meven的spring-cloud搭建"><span class="post-toc-number">3.</span> <span class="post-toc-text">基于meven的spring - cloud搭建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构建父工程"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">构建父工程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#构建common模块-公共服务模块"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">构建common模块(公共服务模块)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建consumer模块-订单消费者"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">创建consumer模块(订单消费者)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结流程"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">总结流程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#扩展"><span class="post-toc-number">4.</span> <span class="post-toc-text">扩展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Eureka整合"><span class="post-toc-number">4.0.0.1.</span> <span class="post-toc-text">Eureka整合</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Ribbon整合"><span class="post-toc-number">4.0.0.2.</span> <span class="post-toc-text">Ribbon整合</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#feign整合"><span class="post-toc-number">4.0.0.3.</span> <span class="post-toc-text">feign整合</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#微服务框架Dubbo和Spring-cloud差异"><span class="post-toc-number">4.0.0.4.</span> <span class="post-toc-text">微服务框架Dubbo和Spring cloud差异</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-微服务搭建"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">微服务搭建</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-06 11:08:53" datetime="2020-04-06T03:08:53.000Z"  itemprop="datePublished">2020-04-06</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h2><p>微服务化的核心就是将传统的一站式应用，根据业务拆分成一个一个的服务，彻底去掉耦合，每一个微服务提供单个业务功能，一个服务只做一件事。从技术角度讲就是一种小而独立的处理过程，类似与进程的概念，能够自行单独启动或销毁，可以拥有自己独立的数据库</p>
+<h2 id="微服务框架-spring-cloud"><a href="#微服务框架-spring-cloud" class="headerlink" title="微服务框架:spring -cloud"></a>微服务框架:spring -cloud</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Spring Cloud是一个完整的微服务解决方案，它提供分布式情况下的各种解决方案合集。而Dubbo是一款高性能的Java RPC框架。Spring Cloud生态和Dubbo生态随着技术的发展，会逐渐的融合互补</span><br><span class="line"></span><br><span class="line">总体架构</span><br><span class="line">  Service Provider： 暴露服务的提供方。</span><br><span class="line">  Service Consumer：调用远程服务的服务消费方。</span><br><span class="line">  EureKa Server： 服务注册中心和服务发现中心</span><br><span class="line"></span><br><span class="line">基础组件：</span><br><span class="line">  服务治理： Spring Cloud Eureka</span><br><span class="line">  客户端负载均衡： Spring Cloud Ribbon</span><br><span class="line">  服务容错保护： Spring Cloud Hystrix</span><br><span class="line">  声明式服务调用： Spring Cloud Feign</span><br><span class="line">  API 网关服务：Spring Cloud Zuul</span><br><span class="line">  分布式配置中心： Spring Cloud Config</span><br></pre></td></tr></table></figure>
+<p>spring-cloud详解: <a href="https://blog.csdn.net/weixin_40902527/article/details/88570443" target="_blank" rel="noopener">csdn地址</a></p>
+<h2 id="基于meven的spring-cloud搭建"><a href="#基于meven的spring-cloud搭建" class="headerlink" title="基于meven的spring - cloud搭建"></a>基于meven的spring - cloud搭建</h2><p>环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ide工具：idea  	jdk版本:1.8 	数据库：mysql8</span><br></pre></td></tr></table></figure>
+
+<p>工程目录：</p>
+<img alt="" class="has" height="216" src="https://img-blog.csdnimg.cn/20190329161843210.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="364">
+
+
+<h3 id="构建父工程"><a href="#构建父工程" class="headerlink" title="构建父工程"></a>构建父工程</h3><ol>
+<li><p>新建一个空工程: File -&gt; New -&gt; New Project </p>
+<img alt="" class="has" src="https://img-blog.csdnimg.cn/20190319144620998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+</li>
+<li><p>创建完成有弹出框 新建modules，点击 + 号，新建一个父工程，也就是一个父 module。然后我们选择 maven 工程，选择 jdk 版本和模板，模板也可以不选择，我这里就没有选择，自己搭建即可;</p>
+</li>
+</ol>
+<img alt="" class="has" src="https://img-blog.csdnimg.cn/20190319160322464.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+
+<ol start="3">
+<li>在pom文件中设置spring boot的parent</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">         xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">         xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;groupId&gt;com.demo&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;microservice&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;packaging&gt;pom&lt;/packaging&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">        &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;</span><br><span class="line">        &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;</span><br><span class="line">        &lt;spring-cloud.version&gt;Edgware.SR1&lt;/spring-cloud.version&gt;</span><br><span class="line">        &lt;spring-boot.version&gt;1.5.10.RELEASE&lt;/spring-boot.version&gt;</span><br><span class="line">        &lt;mysql.version&gt;5.1.46&lt;/mysql.version&gt;</span><br><span class="line">        &lt;mybatis.version&gt;1.3.2&lt;/mybatis.version&gt;</span><br><span class="line">        &lt;lombok.version&gt;1.16.18&lt;/lombok.version&gt;</span><br><span class="line">    &lt;/properties&gt;</span><br><span class="line">    &lt;dependencyManagement&gt;</span><br><span class="line">        &lt;dependencies&gt;</span><br><span class="line">            &lt;!-- 定义 spring cloud 版本 --&gt;</span><br><span class="line">            &lt;dependency&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;<span class="variable">$&#123;spring-cloud.version&#125;</span>&lt;/version&gt;</span><br><span class="line">                &lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">                &lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">            &lt;/dependency&gt;</span><br><span class="line">            &lt;!-- 定义 spring boot 版本 --&gt;</span><br><span class="line">            &lt;dependency&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-boot-dependencies&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;<span class="variable">$&#123;spring-boot.version&#125;</span>&lt;/version&gt;</span><br><span class="line">                &lt;<span class="built_in">type</span>&gt;pom&lt;/<span class="built_in">type</span>&gt;</span><br><span class="line">                &lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">            &lt;/dependency&gt;</span><br><span class="line">            &lt;!-- 定义 mysql 版本 --&gt;</span><br><span class="line">            &lt;dependency&gt;</span><br><span class="line">                &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;<span class="variable">$&#123;mysql.version&#125;</span>&lt;/version&gt;</span><br><span class="line">            &lt;/dependency&gt;</span><br><span class="line">            &lt;!-- 定义 mybatis 版本 --&gt;</span><br><span class="line">            &lt;dependency&gt;</span><br><span class="line">                &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;<span class="variable">$&#123;mybatis.version&#125;</span>&lt;/version&gt;</span><br><span class="line">            &lt;/dependency&gt;</span><br><span class="line">            &lt;!-- 定义 lombok 版本 --&gt;</span><br><span class="line">            &lt;dependency&gt;</span><br><span class="line">                &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">                &lt;version&gt;<span class="variable">$&#123;lombok.version&#125;</span>&lt;/version&gt;</span><br><span class="line">            &lt;/dependency&gt;</span><br><span class="line">        &lt;/dependencies&gt;</span><br><span class="line">    &lt;/dependencyManagement&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">        &lt;/plugins&gt;</span><br><span class="line">    &lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 父工程配置完了，子模块可以直接通过 <code>&lt;parent&gt;</code> 标签引用父工程的依赖包</p>
+<h3 id="构建common模块-公共服务模块"><a href="#构建common模块-公共服务模块" class="headerlink" title="构建common模块(公共服务模块)"></a>构建common模块(公共服务模块)</h3><p>创建microservice-common模块（公共模块）供其子模块调用</p>
+<ol>
+<li>在父工程中添加common子模块，右键microservice - new - module<img alt="" class="has" height="603" src="https://img-blog.csdnimg.cn/20190329163718292.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="896">
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 在pom中添加依赖包</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0&quot;</span><br><span class="line">         xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;maven.apache.org&#x2F;POM&#x2F;4.0.0 http:&#x2F;&#x2F;maven.apache.org&#x2F;xsd&#x2F;maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;parent&gt;</span><br><span class="line">        &lt;artifactId&gt;microservice&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;groupId&gt;com.demo&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;version&gt;1.0-SNAPSHOT&lt;&#x2F;version&gt;</span><br><span class="line">        &lt;relativePath&gt;..&#x2F;microservice&#x2F;pom.xml&lt;&#x2F;relativePath&gt;</span><br><span class="line">    &lt;&#x2F;parent&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;&#x2F;modelVersion&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;artifactId&gt;microservice-common&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;packaging&gt;jar&lt;&#x2F;packaging&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    &lt;!-- 当前Module需要用到的依赖，按自己需求添加，版本号在父类已经定义了，这里不需要再次定义 --&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;&#x2F;dependency&gt;</span><br><span class="line">    &lt;&#x2F;dependencies&gt;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&lt;&#x2F;project&gt;</span><br></pre></td></tr></table></figure>
+
+
+<ol start="3">
+<li>在scr/main/java/下创建实体类，添加公共实体类供其他服务调用</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">package com.demo.springcloud.entity;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">import lombok.AllArgsConstructor;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import lombok.NoArgsConstructor;</span><br><span class="line">import lombok.experimental.Accessors;</span><br><span class="line"> </span><br><span class="line">/**</span><br><span class="line"> * 订单实体</span><br><span class="line"> *@AllArgsConstructor 注解：表示生成带有所有属性的构造方法</span><br><span class="line"> *@NoArgsConstructor 注解：表示生成不带参数的构方法</span><br><span class="line"> *@Data 注解：表示生成get和<span class="built_in">set</span>方法</span><br><span class="line"> */</span><br><span class="line">@AllArgsConstructor</span><br><span class="line">@NoArgsConstructor</span><br><span class="line">@Data</span><br><span class="line">public class TOrder &#123;</span><br><span class="line"> </span><br><span class="line">    /**</span><br><span class="line">     * 主键id</span><br><span class="line">     */</span><br><span class="line">    private Long id;</span><br><span class="line"> </span><br><span class="line">    /**</span><br><span class="line">     * 商品名称</span><br><span class="line">     */</span><br><span class="line">    private String name;</span><br><span class="line"> </span><br><span class="line">    /**</span><br><span class="line">     * 商品价格</span><br><span class="line">     */</span><br><span class="line">    private Double price;</span><br><span class="line"> </span><br><span class="line">    /**</span><br><span class="line">     * 所存的数据库名称</span><br><span class="line">     */</span><br><span class="line">    private String dbSource;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>将common打包成jar文件，点击maven 分别 clean和 install一下</li>
+</ol>
+<img alt="" class="has" height="376" src="https://img-blog.csdnimg.cn/20190329164215385.png" width="239">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 创建provider模块(服务提供者)</span><br><span class="line"></span><br><span class="line">创建服务提供者模块microservice-provider，添加方式和microservice-common一样。服务提供模块，主要负责在表中查询出订单信息，然后将信息通过接口提供给调用方，所以在该模块中，我们需要整合一下 mybatis：</span><br><span class="line"></span><br><span class="line">1. 在pom文件中配置整合的依赖包</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line"># 服务端口号</span><br><span class="line">server:</span><br><span class="line">  port: 8001</span><br><span class="line"> </span><br><span class="line"># 数据库地址</span><br><span class="line">datasource:</span><br><span class="line">  url: localhost:3306&#x2F;demo</span><br><span class="line"> </span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: microservice-order # 对外暴露的服务名称</span><br><span class="line"> </span><br><span class="line">  datasource: # 数据库配置</span><br><span class="line">    driver-class-name: com.mysql.jdbc.Driver</span><br><span class="line">    url: jdbc:mysql:&#x2F;&#x2F;$&#123;datasource.url&#125;?useSSL&#x3D;false&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&amp;allowMultiQueries&#x3D;true&amp;autoReconnect&#x3D;true&amp;failOverReadOnly&#x3D;false&amp;maxReconnects&#x3D;10</span><br><span class="line">    username: root</span><br><span class="line">    password: root</span><br><span class="line">    hikari:</span><br><span class="line">      maximum-pool-size: 10 # 最大连接池数</span><br><span class="line">      max-lifetime: 1770000</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置application.yml</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 服务端口号</span><br><span class="line">server:</span><br><span class="line">  port: 8001</span><br><span class="line"> </span><br><span class="line"># 数据库地址</span><br><span class="line">datasource:</span><br><span class="line">  url: localhost:3306&#x2F;demo</span><br><span class="line"> </span><br><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: microservice-order # 对外暴露的服务名称</span><br><span class="line"> </span><br><span class="line">  datasource: # 数据库配置</span><br><span class="line">    driver-class-name: com.mysql.jdbc.Driver</span><br><span class="line">    url: jdbc:mysql:&#x2F;&#x2F;$&#123;datasource.url&#125;?useSSL&#x3D;false&amp;useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf-8&amp;allowMultiQueries&#x3D;true&amp;autoReconnect&#x3D;true&amp;failOverReadOnly&#x3D;false&amp;maxReconnects&#x3D;10</span><br><span class="line">    username: root</span><br><span class="line">    password: root</span><br><span class="line">    hikari:</span><br><span class="line">      maximum-pool-size: 10 # 最大连接池数</span><br><span class="line">      max-lifetime: 1770000</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>创建数据持久层接口</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">public interface OrderMapper &#123;</span><br><span class="line"> </span><br><span class="line">    @Select(&quot;select * from microservice where id &#x3D; #&#123;id&#125;&quot;)</span><br><span class="line">    TOrder findById(Long id);</span><br><span class="line"> </span><br><span class="line">    @Select(&quot;select * from microservice&quot;)</span><br><span class="line">    List&lt;TOrder&gt; findAll();</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>创建业务层接口以及实现类</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//业务层接口</span><br><span class="line">public interface OrderService &#123;</span><br><span class="line"> </span><br><span class="line">    TOrder findById(Long id);</span><br><span class="line"> </span><br><span class="line">    List&lt;TOrder&gt; findAll();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//接口实现类</span><br><span class="line">@Service</span><br><span class="line">public class OrderServiceImpl implements OrderService &#123;</span><br><span class="line"> </span><br><span class="line">    @Resource</span><br><span class="line">    private OrderMapper orderMapper;</span><br><span class="line"> </span><br><span class="line">    public TOrder findById(Long id) &#123;</span><br><span class="line">        <span class="built_in">return</span> orderMapper.findById(id);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public List&lt;TOrder&gt; <span class="function"><span class="title">findAll</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> orderMapper.findAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>创建服务控制层</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(<span class="string">"/provider/order"</span>)</span><br><span class="line">public class OrderProviderController &#123;</span><br><span class="line"> </span><br><span class="line">    @Resource</span><br><span class="line">    private OrderService orderService;</span><br><span class="line"> </span><br><span class="line">    @GetMapping(<span class="string">"/get/&#123;id&#125;"</span>)</span><br><span class="line">    public TOrder getOrder(@PathVariable Long id) &#123;</span><br><span class="line">        <span class="built_in">return</span> orderService.findById(id);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    @GetMapping(<span class="string">"/get/list"</span>)</span><br><span class="line">    public List&lt;TOrder&gt; <span class="function"><span class="title">getAll</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> orderService.findAll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>创建服务启动类</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@SpringBootApplication</span><br><span class="line">@MapperScan(&quot;com.itcodai.springcloud.dao&quot;)</span><br><span class="line">public class OrderProvider &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(OrderProvider.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>数据结构</li>
+</ol>
+<img alt="" class="has" height="65" src="https://img-blog.csdnimg.cn/20190329170326124.png" width="314">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">服务提供者模块搭建完了可以启动测试，浏览器输入：localhost:8001&#x2F;provider&#x2F;order&#x2F;get&#x2F;list</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建consumer模块-订单消费者"><a href="#创建consumer模块-订单消费者" class="headerlink" title="创建consumer模块(订单消费者)"></a>创建consumer模块(订单消费者)</h3><p>新建子模块的方法和上面两个子模块一样，在命名的时候命名为 microservice-consumer 即可。 microservice-consumer 模块主要是用来调用 microservice-provider模块提供的订单信息，所以在 microservice-consumer 模块中我们不需要引入 mybatis 和 mysql 相关的依赖;</p>
+<ol>
+<li>在pom文件配置依赖包</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;project xmlns=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span><br><span class="line">         xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span><br><span class="line">         xsi:schemaLocation=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span><br><span class="line">    &lt;parent&gt;</span><br><span class="line">        &lt;artifactId&gt;microservice&lt;/artifactId&gt;</span><br><span class="line">        &lt;groupId&gt;com.demo&lt;/groupId&gt;</span><br><span class="line">        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br><span class="line">        &lt;relativePath&gt;../microservice/pom.xml&lt;/relativePath&gt;</span><br><span class="line">    &lt;/parent&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;artifactId&gt;microservice-consumer&lt;/artifactId&gt;</span><br><span class="line">    &lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line"> </span><br><span class="line">    &lt;!-- 当前Module需要用到的依赖，按自己需求添加，版本号在父类已经定义了，这里不需要再次定义 --&gt;</span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;!-- 引入自己定义的 microservice-common 通用包，可以使用common模块中的Order类 --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;com.demo&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;microservice-common&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="variable">$&#123;project.version&#125;</span>&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;!-- spring boot web 依赖 --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建RestTmplate类。在微服务都是以 HTTP 接口的形式暴露自身服务的，因此在调用远程服务时就必须使用 HTTP 客户端。Spring Boot 中使用的是 RestTemplate，首先，我们写一个配置类，将 RestTemplate 作为一个 Bean 交给 Spring 来管理</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class RestTmplateConfig &#123;</span><br><span class="line"> </span><br><span class="line">    @Bean</span><br><span class="line">    public RestTemplate <span class="function"><span class="title">getRestTemplate</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> new RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>有了RestTmplate，接下来我们可以在 Controller 中注入该 RestTemplate 来调用 microservice-provider提供的服务了</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//@RestController 相当于Controller注释加ResponesBody注释</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(<span class="string">"/consumer/order"</span>)</span><br><span class="line">public class OrderConsumerController &#123;</span><br><span class="line"> </span><br><span class="line">    // 订单服务提供者模块的 url 前缀</span><br><span class="line">    private static final String ORDER_PROVIDER_URL_PREFIX = <span class="string">"http://localhost:8001"</span>;</span><br><span class="line"> </span><br><span class="line">    @Resource</span><br><span class="line">    private RestTemplate restTemplate;</span><br><span class="line"> </span><br><span class="line">    @GetMapping(<span class="string">"/get/&#123;id&#125;"</span>)</span><br><span class="line">    public TOrder getOrder(@PathVariable Long id) &#123;</span><br><span class="line"> </span><br><span class="line">        <span class="built_in">return</span> restTemplate.getForObject(ORDER_PROVIDER_URL_PREFIX + <span class="string">"/provider/order/get/"</span> + id, TOrder.class);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    @GetMapping(<span class="string">"/get/list"</span>)</span><br><span class="line">    public List&lt;TOrder&gt; <span class="function"><span class="title">getAll</span></span>() &#123;</span><br><span class="line">        <span class="built_in">return</span> restTemplate.getForObject(ORDER_PROVIDER_URL_PREFIX + <span class="string">"/provider/order/get/list"</span>, List.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>订单消费者模块搭建完了可以启动测试一下</p>
+<p>浏览器访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;consumer&#x2F;order&#x2F;get&#x2F;list</span><br></pre></td></tr></table></figure>
+
+<img alt="" class="has" height="64" src="https://img-blog.csdnimg.cn/20190329171440613.png" width="685">
+
+<p>返回结果，说明服务调用成功</p>
+<p>可以看到通过订单消费者调用服务提供者暴露的服务，实现了每个服务专注于自身的逻辑，服务之间解耦合。</p>
+<h3 id="总结流程"><a href="#总结流程" class="headerlink" title="总结流程"></a>总结流程</h3><p>订单消费模块不直接请求数据库，而是通过 http 远程调用订单提供模块的服务来获取订单信息。也就是说，在微服务里，每个服务只关注自身的逻辑和实现，不用管其他服务的实现，需要获取某个服务的数据时，只要调用该服务提供的接口即可获取相应的数据。实现了每个服务专注于自身的逻辑，服务之间解耦合;</p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><h5 id="Eureka整合"><a href="#Eureka整合" class="headerlink" title="Eureka整合"></a>Eureka整合</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_40902527&#x2F;article&#x2F;details&#x2F;88953312</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="Ribbon整合"><a href="#Ribbon整合" class="headerlink" title="Ribbon整合"></a>Ribbon整合</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_40902527&#x2F;article&#x2F;details&#x2F;88977376</span><br></pre></td></tr></table></figure>
+
+<h5 id="feign整合"><a href="#feign整合" class="headerlink" title="feign整合"></a>feign整合</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_40902527&#x2F;article&#x2F;details&#x2F;89249172</span><br></pre></td></tr></table></figure>
+
+<h5 id="微服务框架Dubbo和Spring-cloud差异"><a href="#微服务框架Dubbo和Spring-cloud差异" class="headerlink" title="微服务框架Dubbo和Spring cloud差异"></a>微服务框架Dubbo和Spring cloud差异</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_40902527&#x2F;article&#x2F;details&#x2F;88579521</span><br></pre></td></tr></table></figure>
+
+<p>代码地址：<a href="https://github.com/zhangti0708/microservice" target="_blank" rel="noopener">github地址</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-06T04:09:40.246Z" itemprop="dateUpdated">2020-04-06 12:09:40</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" target="_blank" rel="external">http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Mr.Zhang">
+            Mr.Zhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/&title=《微服务搭建》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/&title=《微服务搭建》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微服务搭建》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/06/java/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title"> 设计模式总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mr.Zhang &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/&title=《微服务搭建》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/&title=《微服务搭建》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《微服务搭建》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/06/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
