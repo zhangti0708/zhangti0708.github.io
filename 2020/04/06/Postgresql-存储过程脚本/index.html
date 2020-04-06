@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Postgresql|存储过程脚本 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="postgresql">
+    <meta name="description" content="Postgresql函数PostgreSQL函数也称为PostgreSQL存储过程。 PostgreSQL函数或存储过程是存储在数据库服务器上并可以使用SQL界面调用的一组SQL和过程语句(声明，分配，循环，控制流程等)。 它有助于您执行通常在数据库中的单个函数中进行多次查询和往返操作的操作。可以在许多语言(如SQL，PL&#x2F;pgSQL，C，Python等)中创建PostgreSQL函数 12345">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Postgresql|存储过程脚本">
+<meta property="og:url" content="http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:site_name" content="一只咸鱼">
+<meta property="og:description" content="Postgresql函数PostgreSQL函数也称为PostgreSQL存储过程。 PostgreSQL函数或存储过程是存储在数据库服务器上并可以使用SQL界面调用的一组SQL和过程语句(声明，分配，循环，控制流程等)。 它有助于您执行通常在数据库中的单个函数中进行多次查询和往返操作的操作。可以在许多语言(如SQL，PL&#x2F;pgSQL，C，Python等)中创建PostgreSQL函数 12345">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-06T08:02:00.000Z">
+<meta property="article:modified_time" content="2020-04-06T08:13:34.407Z">
+<meta property="article:author" content="Mr.Zhang">
+<meta property="article:tag" content="postgresql">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Zhang</h5>
+          <a href="mailto:zhangticcc@163.com" title="zhangticcc@163.com" class="mail">zhangticcc@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangti0708" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/5392412243" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/weixin_40902527" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Postgresql|存储过程脚本</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Postgresql|存储过程脚本</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-06T08:02:00.000Z" itemprop="datePublished" class="page-time">
+  2020-04-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Postgresql函数"><span class="post-toc-number">1.</span> <span class="post-toc-text">Postgresql函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#参数说明"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">参数说明</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Postgresql-存储过程脚本"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Postgresql|存储过程脚本</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-06 16:02:00" datetime="2020-04-06T08:02:00.000Z"  itemprop="datePublished">2020-04-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="Postgresql函数"><a href="#Postgresql函数" class="headerlink" title="Postgresql函数"></a>Postgresql函数</h3><p>PostgreSQL函数也称为PostgreSQL存储过程。 PostgreSQL函数或存储过程是存储在数据库服务器上并可以使用SQL界面调用的一组SQL和过程语句(声明，分配，循环，控制流程等)。 它有助于您执行通常在数据库中的单个函数中进行多次查询和往返操作的操作。<br>可以在许多语言(如SQL，PL/pgSQL，C，Python等)中创建PostgreSQL函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE [OR REPLACE] FUNCTION function_name (arguments)   </span><br><span class="line">RETURNS return_datatype AS $variable_name$  </span><br><span class="line">  DECLARE  </span><br><span class="line">    declaration;  </span><br><span class="line">    [...]  </span><br><span class="line">  BEGIN  </span><br><span class="line">    &lt; function_body &gt;  </span><br><span class="line">    [...]  </span><br><span class="line">    RETURN &#123; variable_name | value &#125;  </span><br><span class="line">  END; LANGUAGE plpgsql;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><figure class="highlight plain"><figcaption><span>指定函数的名称。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;[OR REPLACE]&#96;&#96;&#96;  是可选的，它允许您修改&#x2F;替换现有函数。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;RETURN&#96;&#96;&#96;  它指定要从函数返回的数据类型。它可以是基础，复合或域类型，或者也可以引用表列的类型。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;function_body&#96;&#96;&#96;  function_body包含可执行部分。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;plpgsql&#96;&#96;&#96;  它指定实现该函数的语言的名称。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 示例</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1. 对数据进行检测并打标记</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;bash</span><br><span class="line">CREATE OR REPLACE FUNCTION &quot;public&quot;.&quot;pg_materules&quot;(varchar)</span><br><span class="line">  RETURNS &quot;pg_catalog&quot;.&quot;int4&quot; AS $BODY$</span><br><span class="line">  Declare</span><br><span class="line">   tableName VARCHAR;</span><br><span class="line">   sql VARCHAR;</span><br><span class="line">   res int;</span><br><span class="line">   Begin</span><br><span class="line">			tableName:&#x3D;$1;	</span><br><span class="line">			res:&#x3D;0;</span><br><span class="line">			---- 初始化表内容</span><br><span class="line">			sql &#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;&#39;&#39;异常信息:&#39;&#39;;&#39;;execute sql;</span><br><span class="line">			---- </span><br><span class="line">			----数据表字段检查</span><br><span class="line">			sql:&#x3D; &#39;select count(*) from information_schema.columns WHERE table_name &#x3D; &#39;&#39;&#39;||tableName||&#39;&#39;&#39; and column_name &#x3D; &#39;&#39;id&#39;&#39;;&#39;;</span><br><span class="line">			execute sql into res;</span><br><span class="line">			if res is null or res&#x3D;0 then</span><br><span class="line">				sql &#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;ID字段缺失,&#39;&#39;;&#39;;execute sql;</span><br><span class="line">			end if;</span><br><span class="line">				sql:&#x3D; &#39;select count(*) from information_schema.columns WHERE table_name &#x3D; &#39;&#39;&#39;||tableName||&#39;&#39;&#39; and column_name &#x3D; &#39;&#39;name&#39;&#39;;&#39;;</span><br><span class="line">			execute sql into res;</span><br><span class="line">			if res is null or res&#x3D;0 then</span><br><span class="line">				sql &#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;NAME字段缺失,&#39;&#39;;&#39;;execute sql;</span><br><span class="line">			end if;</span><br><span class="line">				sql:&#x3D; &#39;select count(*) from information_schema.columns WHERE table_name &#x3D; &#39;&#39;&#39;||tableName||&#39;&#39;&#39; and column_name &#x3D; &#39;&#39;citycode&#39;&#39;;&#39;;</span><br><span class="line">			execute sql into res;</span><br><span class="line">			if res is null or res&#x3D;0 then</span><br><span class="line">				sql &#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;CITYCODE字段缺失,&#39;&#39;;&#39;;execute sql;</span><br><span class="line">			end if;</span><br><span class="line">			----</span><br><span class="line">			---- 坐标检查</span><br><span class="line">			----</span><br><span class="line">			sql:&#x3D; &#39;select count(*) from information_schema.columns WHERE table_name &#x3D; &#39;&#39;&#39;||tableName||&#39;&#39;&#39; and column_name &#x3D; &#39;&#39;lat&#39;&#39;;&#39;;</span><br><span class="line">			execute sql into res;</span><br><span class="line">			if res is null or res&#x3D;0 then</span><br><span class="line">				sql &#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;LAT字段缺失,&#39;&#39;;&#39;;execute sql;</span><br><span class="line">			else</span><br><span class="line">				----初始化坐标类型</span><br><span class="line">				sql &#x3D; &#39;ALTER TABLE &#39;||tableName||&#39; ALTER COLUMN lat TYPE varchar(100);&#39;;execute sql;</span><br><span class="line">				sql:&#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;缺失坐标LAT,&#39;&#39; where lat&#x3D;&#39;&#39;&#39;&#39; or lat is null;&#39;;execute sql;</span><br><span class="line">			end if;</span><br><span class="line">			</span><br><span class="line">			sql:&#x3D; &#39;select count(*) from information_schema.columns WHERE table_name &#x3D; &#39;&#39;&#39;||tableName||&#39;&#39;&#39; and column_name &#x3D; &#39;&#39;lon&#39;&#39;;&#39;;</span><br><span class="line">			execute sql into res;</span><br><span class="line">			if res is null or res&#x3D;0 then</span><br><span class="line">				sql &#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;LON字段缺失,&#39;&#39;;&#39;;execute sql;</span><br><span class="line">			else</span><br><span class="line">				----初始化坐标类型</span><br><span class="line">				sql &#x3D; &#39;ALTER TABLE &#39;||tableName||&#39; ALTER COLUMN lon TYPE varchar(80);&#39;;execute sql;</span><br><span class="line">				sql:&#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;缺失坐标LON,&#39;&#39; where lon&#x3D;&#39;&#39;&#39;&#39; or lon is null;&#39;;execute sql;</span><br><span class="line">			end if;</span><br><span class="line">			----</span><br><span class="line">			---- 销售额字段检查处理</span><br><span class="line">			----</span><br><span class="line">			sql:&#x3D; &#39;select count(*) from information_schema.columns WHERE table_name &#x3D; &#39;&#39;&#39;||tableName||&#39;&#39;&#39; and column_name &#x3D; &#39;&#39;sale&#39;&#39;;&#39;;</span><br><span class="line">			execute sql into res;</span><br><span class="line">			if res is null or res&#x3D;0 then</span><br><span class="line">				sql &#x3D; &#39;update &#39;||tableName||&#39; set type_message&#x3D;&#39;&#39;空白门店&#39;&#39;;&#39;;execute sql;</span><br><span class="line">			else</span><br><span class="line">				----初始化销售额类型</span><br><span class="line">				sql &#x3D; &#39;ALTER TABLE &#39;||tableName||&#39; ALTER COLUMN sale TYPE INT;&#39;;execute sql;</span><br><span class="line">				sql &#x3D; &#39;update &#39;||tableName||&#39; set type_message&#x3D;&#39;&#39;覆盖门店&#39;&#39; where type_message&#x3D;&#39;&#39;&#39;&#39; or type_message is null;&#39;;execute sql;</span><br><span class="line">				sql:&#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;销售额异常,&#39;&#39; where sale is null or sale &lt;&#x3D;0;&#39;;execute sql;</span><br><span class="line">			end if;</span><br><span class="line">			----</span><br><span class="line">			---- 业态检查</span><br><span class="line">			----</span><br><span class="line">			sql:&#x3D; &#39;select count(*) from information_schema.columns WHERE table_name &#x3D; &#39;&#39;&#39;||tableName||&#39;&#39;&#39; and column_name &#x3D; &#39;&#39;yt&#39;&#39;;&#39;;</span><br><span class="line">			execute sql into res;</span><br><span class="line">			if res is null or res&#x3D;0 then</span><br><span class="line">					sql &#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;YT字段缺失,&#39;&#39;;&#39;;execute sql;</span><br><span class="line">			else</span><br><span class="line">				sql:&#x3D; &#39;update &#39;||tableName||&#39; set err_message&#x3D;err_message||&#39;&#39;缺失业态,&#39;&#39; where yt &#x3D; &#39;&#39;&#39;&#39; or yt is null;&#39;;execute sql;</span><br><span class="line">			end if;</span><br><span class="line">    return 0;</span><br><span class="line">   end;</span><br><span class="line"> $BODY$</span><br><span class="line">  LANGUAGE plpgsql VOLATILE</span><br><span class="line">  COST 100</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>给某张表添加多个列</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION <span class="string">"public"</span>.<span class="string">"pg_addcolumn"</span>(_text, varchar)</span><br><span class="line">  RETURNS <span class="string">"pg_catalog"</span>.<span class="string">"int4"</span> AS <span class="variable">$BODY</span>$</span><br><span class="line">  Declare</span><br><span class="line">		cols text[];</span><br><span class="line">		newTableName VARCHAR;</span><br><span class="line">		scount INTEGER;</span><br><span class="line">		sql VARCHAR;</span><br><span class="line">   Begin</span><br><span class="line">		cols:=<span class="variable">$1</span>;</span><br><span class="line">		newTableName:=<span class="variable">$2</span>;</span><br><span class="line">		scount:= array_length(cols,1);</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> 1..scount loop</span><br><span class="line">			sql:=<span class="string">'alter table '</span>||newTableName||<span class="string">' add column '</span>||quote_ident(cols[i])||<span class="string">' VARCHAR default null;'</span>;</span><br><span class="line">			EXECUTE sql;</span><br><span class="line">    end LOOP;</span><br><span class="line">    <span class="built_in">return</span> 0;</span><br><span class="line">   end;</span><br><span class="line"> <span class="variable">$BODY</span>$</span><br><span class="line">  LANGUAGE plpgsql VOLATILE</span><br><span class="line">  COST 100</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删除三个月以前的数据</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE FUNCTION delete_ebd_compute_log_three_month_ago_data()</span><br><span class="line">  RETURNS void AS</span><br><span class="line"><span class="variable">$BODY</span>$</span><br><span class="line">    begin</span><br><span class="line">    delete from ebd_compute_log <span class="built_in">where</span> create_time &lt; CURRENT_TIMESTAMP(0) ::                 TIMESTAMP WITHOUT TIME ZONE - interval <span class="string">'3 months'</span>;</span><br><span class="line">    END;</span><br><span class="line"><span class="variable">$BODY</span>$</span><br><span class="line">LANGUAGE plpgsql VOLATILE;</span><br><span class="line"> </span><br><span class="line">GRANT EXECUTE ON FUNCTION delete_ebd_compute_log_three_month_ago_data() TO public;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-06T08:13:34.407Z" itemprop="dateUpdated">2020-04-06 16:13:34</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/" target="_blank" rel="external">http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Mr.Zhang">
+            Mr.Zhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postgresql/" rel="tag">postgresql</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/&title=《Postgresql|存储过程脚本》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/&title=《Postgresql|存储过程脚本》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Postgresql|存储过程脚本》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/04/06/linux-%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85PostGIS/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">linux| 源码安装PostGIS</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/06/python-%E8%81%8A%E5%A4%A9%E5%AE%A4/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">python| socket聊天室</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mr.Zhang &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/&title=《Postgresql|存储过程脚本》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/&title=《Postgresql|存储过程脚本》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Postgresql|存储过程脚本》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/06/Postgresql-%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E8%84%9A%E6%9C%AC/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
