@@ -28,14 +28,16 @@
 <meta property="og:site_name" content="一只咸鱼">
 <meta property="og:description" content="爬虫网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。 Python爬虫Python，丰富的第三方库十分强大，简单几行代码便可实现你想要的功能，更重要的，Python也是数据挖掘和分析的好能手。这样爬取数据和分析数据一条龙的服务都用Python">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019010410201027.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2019010410383526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190104103837219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190104104204104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-04-06T07:10:00.000Z">
-<meta property="article:modified_time" content="2020-04-06T08:00:52.445Z">
+<meta property="article:modified_time" content="2020-04-07T06:42:29.129Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019010410383526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019010410201027.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
     
         <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
     
@@ -177,7 +179,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#爬虫"><span class="post-toc-number">1.</span> <span class="post-toc-text">爬虫</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Python爬虫"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Python爬虫</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#工作流程"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#爬虫框架-Scrapy"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">爬虫框架(Scrapy)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#爬取高德数据边界"><span class="post-toc-number">2.</span> <span class="post-toc-text">爬取高德数据边界</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#高德api接口地址："><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">高德api接口地址：</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#爬取思路"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">爬取思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#通过高德搜索接口得到附近小区搜索列表"><span class="post-toc-number">2.0.1.1.</span> <span class="post-toc-text">通过高德搜索接口得到附近小区搜索列表</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#爬取方案"><span class="post-toc-number">2.0.1.2.</span> <span class="post-toc-text">爬取方案</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#爬虫"><span class="post-toc-number">1.</span> <span class="post-toc-text">爬虫</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Python爬虫"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Python爬虫</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#工作流程"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">工作流程</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#爬虫框架-Scrapy"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">爬虫框架(Scrapy)</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#爬取高德数据边界"><span class="post-toc-number">2.</span> <span class="post-toc-text">爬取高德数据边界</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#高德api接口地址："><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">高德api接口地址：</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#爬取思路"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">爬取思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#通过高德搜索接口得到附近小区搜索列表"><span class="post-toc-number">2.0.1.1.</span> <span class="post-toc-text">通过高德搜索接口得到附近小区搜索列表</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#爬取方案"><span class="post-toc-number">2.0.1.2.</span> <span class="post-toc-text">爬取方案</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常见问题"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">常见问题</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -216,10 +218,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;restapi.amap.com&#x2F;v3&#x2F;place&#x2F;text?key&#x3D;4b86820a7590de60e4f81f53e59ae17f&amp;citylimit&#x3D;true&amp;output&#x3D;json&amp;</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight plain"><figcaption><span>为申请的密钥，申请详细步骤文档有说明</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;keywords&#96;&#96;&#96; 查询的关键词，如景区&#x2F;小区名称</span><br><span class="line">&#96;&#96;&#96;city&#96;&#96;&#96; 查询的目标城市</span><br><span class="line"></span><br><span class="line">示例 ：</span><br></pre></td></tr></table></figure>
-<p><a href="https://restapi.amap.com/v3/place/text?key=4b86820a7590de60e4f81f53e59ae17f&amp;citylimit=true&amp;output=json&amp;keywords=中山陵景区&amp;city=南京" target="_blank" rel="noopener">https://restapi.amap.com/v3/place/text?key=4b86820a7590de60e4f81f53e59ae17f&amp;citylimit=true&amp;output=json&amp;keywords=中山陵景区&amp;city=南京</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">返回结果为json字符串</span><br><span class="line">&lt;img alt&#x3D;&quot;&quot; class&#x3D;&quot;has&quot; height&#x3D;&quot;250&quot; src&#x3D;&quot;https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;2019010410201027.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw&#x3D;&#x3D;,size_16,color_FFFFFF,t_70&quot; width&#x3D;&quot;1200&quot;&gt;</span><br><span class="line">提取景区&#x2F;小区的&#96;&#96;&#96;id&#96;&#96;&#96;：&#96;&#96;&#96;B0FFHVEECG</span><br></pre></td></tr></table></figure>
+<p><code>key</code> 为申请的密钥，申请详细步骤文档有说明<br><code>keywords</code> 查询的关键词，如景区/小区名称<br><code>city</code> 查询的目标城市</p>
+<p>示例 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;restapi.amap.com&#x2F;v3&#x2F;place&#x2F;text?key&#x3D;4b86820a7590de60e4f81f53e59ae17f&amp;citylimit&#x3D;true&amp;output&#x3D;json&amp;keywords&#x3D;中山陵景区&amp;city&#x3D;南京</span><br></pre></td></tr></table></figure>
 
+<p>返回结果为json字符串<br><img alt="" class="has" height="250" src="https://img-blog.csdnimg.cn/2019010410201027.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1200"><br>提取景区/小区的<code>id</code>：<code>B0FFHVEECG</code></p>
 <h6 id="爬取方案"><a href="#爬取方案" class="headerlink" title="爬取方案"></a>爬取方案</h6><p>方案1 ：<br>然后通过poiid调用另外一个接口查询该景区/小区</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;ditu.amap.com&#x2F;detail&#x2F;get&#x2F;detail?id&#x3D;B0FFHVEECG</span><br></pre></td></tr></table></figure>
 
@@ -232,11 +235,15 @@
 <p> 通过<code>poiid</code>查找边界信息，红色部分可以替换成其他城市代码（身份证前6位）和景区id</p>
 <p>接口地址：<code>https://gaode.com/service/poiInfo?query_type=IDQ&amp;pagesize=20&amp;pagenum=1&amp;qii=true&amp;cluster_state=5&amp;need_utd=true&amp;utd_sceneid=1000&amp;div=PC1000&amp;addr_poi_merge=true&amp;is_classify=true&amp;zoom=11&amp;id=B022F0071G&amp;city=341003</code></p>
 <p>请求返回结果：<br><img alt="" class="has" height="604" src="https://img-blog.csdnimg.cn/20190104103837219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1200"></p>
-<figure class="highlight plain"><figcaption><span>由一堆坐标组成的数值</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img alt&#x3D;&quot;&quot; class&#x3D;&quot;has&quot; height&#x3D;&quot;331&quot; src&#x3D;&quot;https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20190104104204104.png?x-oss-process&#x3D;image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw&#x3D;&#x3D;,size_16,color_FFFFFF,t_70&quot; width&#x3D;&quot;1200&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>将返回的结果转成json ，然后逐层提取出来<br>返回的value字段值还需修改一下，将_换成，才能使用<br>存入数据库或者csv文档</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### 常见问题</span><br><span class="line"></span><br><span class="line">高德的反扒机制：</span><br></pre></td></tr></table></figure>
-<p>错误数据<br>接口异常<br>跳转第三方接口</p>
-<p>```<br>推荐使用ip代理搭建一个ip池：<br><a href="http://localhost:4000/2020/04/06/%E7%88%AC%E8%99%AB-%E5%9F%BA%E4%BA%8Eredis%E6%90%AD%E5%BB%BAIP%E4%BB%A3%E7%90%86%E6%B1%A0/" target="_blank" rel="noopener">博客</a></p>
+<p><code>value</code>字段 由一堆坐标组成的数值</p>
+<img alt="" class="has" height="331" src="https://img-blog.csdnimg.cn/20190104104204104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1200">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">将返回的结果转成json ，然后逐层提取出来</span><br><span class="line">返回的value字段值还需修改一下，将_换成，才能使用</span><br><span class="line">存入数据库或者csv文档</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><p>高德的反扒机制：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">错误数据</span><br><span class="line">接口异常</span><br><span class="line">跳转第三方接口</span><br></pre></td></tr></table></figure>
+<p>推荐使用ip代理搭建一个ip池：<br><a href="http://localhost:4000/2020/04/06/%E7%88%AC%E8%99%AB-%E5%9F%BA%E4%BA%8Eredis%E6%90%AD%E5%BB%BAIP%E4%BB%A3%E7%90%86%E6%B1%A0/" target="_blank" rel="noopener">博客</a></p>
 <p>常用反反爬机制：<br><a href="https://blog.csdn.net/weixin_40902527/article/details/87635071" target="_blank" rel="noopener">csdn地址</a></p>
 <p>PhantomJS + selenium 防反爬：<br><a href="https://blog.csdn.net/weixin_40902527/article/details/857707501" target="_blank" rel="noopener">csdn地址</a></p>
 
@@ -247,7 +254,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-06T08:00:52.445Z" itemprop="dateUpdated">2020-04-06 16:00:52</time>
+    最后更新时间：<time datetime="2020-04-07T06:42:29.129Z" itemprop="dateUpdated">2020-04-07 14:42:29</time>
 </span><br>
 
 

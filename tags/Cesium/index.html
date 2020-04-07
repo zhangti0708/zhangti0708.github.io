@@ -159,7 +159,15 @@
             ">全部</a>
         
 
-            <a href="/tags/js/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">js</a>
+            <a href="/tags/cesium/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">cesium</a>
+
+        
+
+            <a href="/tags/js/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">js</a>
+
+        
+
+            <a href="/tags/postgresql/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">postgresql</a>
 
         
 
@@ -167,35 +175,31 @@
 
         
 
-            <a href="/tags/postgresql/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">postgresql</a>
+            <a href="/tags/JAVA/" style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">JAVA</a>
 
         
 
-            <a href="/tags/Gcc/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Gcc</a>
+            <a href="/tags/Mysql/" style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Mysql</a>
 
         
 
-            <a href="/tags/JAVA/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">JAVA</a>
+            <a href="/tags/Gcc/" style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">Gcc</a>
 
         
 
-            <a href="/tags/ol-cesium/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">ol-cesium</a>
+            <a href="/tags/Node/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">Node</a>
 
         
 
-            <a href="/tags/Mysql/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Mysql</a>
+            <a href="/tags/ol-cesium/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">ol-cesium</a>
 
         
 
-            <a href="/tags/Node/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">Node</a>
+            <a href="/tags/openlayers/" style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">openlayers</a>
 
         
 
-            <a href="/tags/openlayers/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">openlayers</a>
-
-        
-
-            <a href="/tags/Python/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">Python</a>
+            <a href="/tags/Python/" style="-webkit-order:8;order:8" class="tags-list-item waves-effect waves-button waves-light">Python</a>
 
         
     </nav>
@@ -329,6 +333,97 @@
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/tags/Cesium/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
+m/&title=一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/tags/cesium/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=一只咸鱼&url=http://yoursite.com/tags/cesium/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/tags/cesium/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/tags/cesium/" alt="微信分享二维码">
 </div>
 
 

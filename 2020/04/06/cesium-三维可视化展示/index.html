@@ -21,21 +21,21 @@
     
     
     <meta name="keywords" content="Cesium">
-    <meta name="description" content="前言因工作需要学习cesium有一段时间了，对现有的业务功能进行模块化封装和效果展示。封装完成之后开发一套前端模版，以后项目基本可以基于这个平台做二次开发； 效果展示分为基础功能展示，分析可视化，以及业务功能模块展示          前端模版基于封装的sdk的开发模版 集成开源插件，场景控制等">
+    <meta name="description" content="前言因工作需要学习cesium有一段时间了，对现有的业务功能进行模块化封装和效果展示。封装完成之后开发一套前端模版，以后项目基本可以基于这个平台做二次开发； 效果展示分为基础功能展示，分析可视化，以及业务功能模块展示  场景控制，地图工具   可视化组件 开源插件 图形插件   控件 地球控制   分析功能 业务封装      前端模版基于封装的sdk的开发模版 集成开源插件，场景控制等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cesium|三维可视化展示">
 <meta property="og:url" content="http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="前言因工作需要学习cesium有一段时间了，对现有的业务功能进行模块化封装和效果展示。封装完成之后开发一套前端模版，以后项目基本可以基于这个平台做二次开发； 效果展示分为基础功能展示，分析可视化，以及业务功能模块展示          前端模版基于封装的sdk的开发模版 集成开源插件，场景控制等">
+<meta property="og:description" content="前言因工作需要学习cesium有一段时间了，对现有的业务功能进行模块化封装和效果展示。封装完成之后开发一套前端模版，以后项目基本可以基于这个平台做二次开发； 效果展示分为基础功能展示，分析可视化，以及业务功能模块展示  场景控制，地图工具   可视化组件 开源插件 图形插件   控件 地球控制   分析功能 业务封装      前端模版基于封装的sdk的开发模版 集成开源插件，场景控制等">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191121150608158.gif">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191121150654980.gif">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191121150716729.gif">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200218172256663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200406175709395.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200406175712494.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407150227843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407150251383.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-04-06T09:34:00.000Z">
-<meta property="article:modified_time" content="2020-04-06T10:04:18.949Z">
+<meta property="article:modified_time" content="2020-04-07T07:08:35.848Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="Cesium">
 <meta name="twitter:card" content="summary">
@@ -209,19 +209,31 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>因工作需要学习cesium有一段时间了，对现有的业务功能进行模块化封装和效果展示。封装完成之后开发一套前端模版，以后项目基本可以基于这个平台做二次开发；</p>
 <h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p>分为基础功能展示，分析可视化，以及业务功能模块展示</p>
-<img alt="" class="has" height="430" src="https://img-blog.csdnimg.cn/20191121150608158.gif" width="800">
+<ol>
+<li><p>场景控制，地图工具</p>
+<img alt="" class="has" height="400" src="https://img-blog.csdnimg.cn/20191121150608158.gif" width="700">
+</li>
+<li><p>可视化组件 开源插件 图形插件</p>
+<img alt="" class="has" height="400" src="https://img-blog.csdnimg.cn/20191121150654980.gif" width="700">
+</li>
+<li><p>控件 地球控制</p>
+<img alt="" class="has" height="400" src="https://img-blog.csdnimg.cn/20191121150716729.gif" width="700">
+</li>
+<li><p>分析功能 业务封装</p>
+<img alt="" height="400" src="https://img-blog.csdnimg.cn/20200218172256663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700">
 
-<img alt="" class="has" height="430" src="https://img-blog.csdnimg.cn/20191121150654980.gif" width="800">
 
-<img alt="" class="has" height="430" src="https://img-blog.csdnimg.cn/20191121150716729.gif" width="800">
-
-<img alt="" height="430" src="https://img-blog.csdnimg.cn/20200218172256663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
-
-
+</li>
+</ol>
 <h3 id="前端模版"><a href="#前端模版" class="headerlink" title="前端模版"></a>前端模版</h3><p>基于封装的sdk的开发模版 集成开源插件，场景控制等</p>
-<img alt="" height="430" src="https://img-blog.csdnimg.cn/20200406175709395.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
+<img alt="" height="400" src="https://img-blog.csdnimg.cn/20200407150227843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700">
 
-<img alt="" height="430" src="https://img-blog.csdnimg.cn/20200406175712494.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
+
+
+<img alt="" height="400" src="https://img-blog.csdnimg.cn/20200407150251383.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700">
+
+<p>平台正在完善…</p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -229,7 +241,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-06T10:04:18.949Z" itemprop="dateUpdated">2020-04-06 18:04:18</time>
+    最后更新时间：<time datetime="2020-04-07T07:08:35.848Z" itemprop="dateUpdated">2020-04-07 15:08:35</time>
 </span><br>
 
 
@@ -310,7 +322,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node|封装功能模块发布npm包</h4>
+      </a>
+    </div>
   
 
   

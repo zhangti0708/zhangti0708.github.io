@@ -21,12 +21,12 @@
     
     
     <meta name="keywords" content="openlayers">
-    <meta name="description" content="前言将之前做的业务功能整合了一下, 拆分成几个常用模块进行业务封装，使每个模块提供一个接口达到快速开发的目的。集成了多个开源插件和UI，还在完善中...效果支持地图基本服务和封装部分业务功能   封装常用控件及功能 一套完整的sdk工具   封装常用业务模块，提供接口服务     3.集成标绘 风场 图表等插件">
+    <meta name="description" content="前言将之前做的业务功能整合了一下, 拆分成几个常用模块进行业务封装，使每个模块提供一个接口达到快速开发的目的。集成了多个开源插件和UI，还在完善中...效果支持地图基本服务和封装部分业务功能   封装常用控件及功能 一套完整的sdk工具   封装常用业务模块，提供接口服务   集成标绘 风场 图表等插件             还在完善中…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ol| 基于ol+es6+webpack的开发模版">
 <meta property="og:url" content="http://yoursite.com/2020/04/06/ol-%E5%9F%BA%E4%BA%8Eol-es6-node-webpack%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E7%89%88/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="前言将之前做的业务功能整合了一下, 拆分成几个常用模块进行业务封装，使每个模块提供一个接口达到快速开发的目的。集成了多个开源插件和UI，还在完善中...效果支持地图基本服务和封装部分业务功能   封装常用控件及功能 一套完整的sdk工具   封装常用业务模块，提供接口服务     3.集成标绘 风场 图表等插件">
+<meta property="og:description" content="前言将之前做的业务功能整合了一下, 拆分成几个常用模块进行业务封装，使每个模块提供一个接口达到快速开发的目的。集成了多个开源插件和UI，还在完善中...效果支持地图基本服务和封装部分业务功能   封装常用控件及功能 一套完整的sdk工具   封装常用业务模块，提供接口服务   集成标绘 风场 图表等插件             还在完善中…">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200307112229649.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200307112332293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200307112107378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200307113845466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-04-06T09:20:00.000Z">
-<meta property="article:modified_time" content="2020-04-06T09:25:07.003Z">
+<meta property="article:modified_time" content="2020-04-07T06:45:41.651Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="openlayers">
 <meta name="twitter:card" content="summary">
@@ -210,20 +210,25 @@
             <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><pre><code>将之前做的业务功能整合了一下, 拆分成几个常用模块进行业务封装，使每个模块提供一个接口达到快速开发的目的。集成了多个开源插件和UI，还在完善中...</code></pre><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><p>支持地图基本服务和封装部分业务功能 </p>
 <ol>
 <li><p>封装常用控件及功能 一套完整的sdk工具</p>
-<img alt="" height="514" src="https://img-blog.csdnimg.cn/20200307112229649.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1000">
+<img alt="" height="430" src="https://img-blog.csdnimg.cn/20200307112229649.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
 </li>
 <li><p>封装常用业务模块，提供接口服务</p>
-<img alt="" height="512" src="https://img-blog.csdnimg.cn/20200307112332293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1000">
+<img alt="" height="430" src="https://img-blog.csdnimg.cn/20200307112332293.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
+</li>
+<li><p>集成标绘 风场 图表等插件</p>
+<img alt="" height="430" src="https://img-blog.csdnimg.cn/20200307112648899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
+
 
 </li>
 </ol>
-<p>3.集成标绘 风场 图表等插件<br><img alt="" height="515" src="https://img-blog.csdnimg.cn/20200307112648899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1000"></p>
-<img alt="" height="515" src="https://img-blog.csdnimg.cn/20200307112039559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1000">
+<img alt="" height="430" src="https://img-blog.csdnimg.cn/20200307112039559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
 
-<img alt="" height="515" src="https://img-blog.csdnimg.cn/20200307112107378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1000">
+<img alt="" height="515" src="https://img-blog.csdnimg.cn/20200307112107378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
 
-<img alt="" height="516" src="https://img-blog.csdnimg.cn/20200307113845466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1000">
 
+<img alt="" height="430" src="https://img-blog.csdnimg.cn/20200307113845466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
+
+<p>还在完善中…</p>
 
         </div>
 
@@ -232,7 +237,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-06T09:25:07.003Z" itemprop="dateUpdated">2020-04-06 17:25:07</time>
+    最后更新时间：<time datetime="2020-04-07T06:45:41.651Z" itemprop="dateUpdated">2020-04-07 14:45:41</time>
 </span><br>
 
 

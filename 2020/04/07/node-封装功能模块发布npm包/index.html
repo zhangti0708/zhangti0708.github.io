@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>node|封装功能模块发布npm包 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Node">
+    <meta name="description" content="npmnpm是一个辅助前端开发的包管理工具 12345678910包括：  网站：找包、注册用户  命令行：程序员与npm交互的主要形式  仓库：最大的JavaScript软件库  管理对象：包（package）  管理方式：    增（发布：npm publish；安装：npm i）    删（废弃：npm deprecate；卸载：npm rm）    改（更新：npm up）    查（搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node|封装功能模块发布npm包">
+<meta property="og:url" content="http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/index.html">
+<meta property="og:site_name" content="一只咸鱼">
+<meta property="og:description" content="npmnpm是一个辅助前端开发的包管理工具 12345678910包括：  网站：找包、注册用户  命令行：程序员与npm交互的主要形式  仓库：最大的JavaScript软件库  管理对象：包（package）  管理方式：    增（发布：npm publish；安装：npm i）    删（废弃：npm deprecate；卸载：npm rm）    改（更新：npm up）    查（搜索">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407152249389.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407151734464.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407152350231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407153734252.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407154034666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407154441555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-04-07T07:10:00.000Z">
+<meta property="article:modified_time" content="2020-04-07T07:45:53.732Z">
+<meta property="article:author" content="Mr.Zhang">
+<meta property="article:tag" content="Node">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200407152249389.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Zhang</h5>
+          <a href="mailto:zhangticcc@163.com" title="zhangticcc@163.com" class="mail">zhangticcc@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangti0708" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/5392412243" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/weixin_40902527" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">node|封装功能模块发布npm包</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">node|封装功能模块发布npm包</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-07T07:10:00.000Z" itemprop="datePublished" class="page-time">
+  2020-04-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gis/">Gis</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gis/%E5%89%8D%E7%AB%AF/">前端</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#npm"><span class="post-toc-number">1.</span> <span class="post-toc-text">npm</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#封装模块发布"><span class="post-toc-number">2.</span> <span class="post-toc-text">封装模块发布</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#封装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">封装</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#发布npm包"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">发布npm包</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#调用"><span class="post-toc-number">3.</span> <span class="post-toc-text">调用</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-node-封装功能模块发布npm包"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">node|封装功能模块发布npm包</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-07 15:10:00" datetime="2020-04-07T07:10:00.000Z"  itemprop="datePublished">2020-04-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gis/">Gis</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gis/%E5%89%8D%E7%AB%AF/">前端</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h3><p>npm是一个辅助前端开发的包管理工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">包括：</span><br><span class="line">  网站：找包、注册用户</span><br><span class="line">  命令行：程序员与npm交互的主要形式</span><br><span class="line">  仓库：最大的JavaScript软件库</span><br><span class="line">  管理对象：包（package）</span><br><span class="line">  管理方式：</span><br><span class="line">    增（发布：npm publish；安装：npm i）</span><br><span class="line">    删（废弃：npm deprecate；卸载：npm rm）</span><br><span class="line">    改（更新：npm up）</span><br><span class="line">    查（搜索：npm s）</span><br></pre></td></tr></table></figure>
+<p>npm中涉及到的主体主要有两个：package和module，定义如下：</p>
+<p>package：含有package.json描述文件并发布到npm仓库的文件或者文件夹<br>module：在node_modules中，可以被Node.js的require()方法加载的任何文件或文件夹<br>可以这样理解：一个JavaScript软件，从本地发布到npm仓库时是package，从npm仓库下载到本地时就变成了module</p>
+<p>另外，基于以上，可以看出package和module的关系：</p>
+<p>module不一定是package（比如node内置模块），package一定是module<br>含package.json文件的module一定是package;</p>
+<h3 id="封装模块发布"><a href="#封装模块发布" class="headerlink" title="封装模块发布"></a>封装模块发布</h3><h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><ol>
+<li>注册一个npm账号 <code>https://docs.npmjs.com/cli/publish.html</code></li>
+</ol>
+<p>其中用户名会在发布npm包 初始化时用到</p>
+<ol start="2">
+<li>创建一个node项目并初始化 <code>npm init</code><br>依次输入信息 <code>name</code> 和 npm的<code>username</code>及<code>password</code></li>
+</ol>
+<p>初始化完成目录结构</p>
+<img alt="" height="100" src="https://img-blog.csdnimg.cn/20200407152249389.png" width="350">
+
+<ol start="3">
+<li>准备好封装的工程文件</li>
+</ol>
+<img alt="" height="61" src="https://img-blog.csdnimg.cn/20200407151734464.png" width="251">
+
+<p>将功能模块集成到统一的入口文件中<br><img alt="" height="394" src="https://img-blog.csdnimg.cn/20200407152350231.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="583"></p>
+<p>测试通过…</p>
+<h4 id="发布npm包"><a href="#发布npm包" class="headerlink" title="发布npm包"></a>发布npm包</h4><p>进入项目根目录 执行命令:</p>
+<p><code>npm version patch</code> 每次发布前执行一下，避免版本冲突错误</p>
+<p><code>npm publish</code> 发布版本</p>
+<p>查看发布的npm包</p>
+<img alt="" height="100" src="https://img-blog.csdnimg.cn/20200407153734252.png" width="700">
+
+<p>发布成功！</p>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>在第三方项目中需要使用该包 执行 <code>npm install xxmap</code> 根据npm 的 <code>name</code>安装</p>
+<p>在工程中直接调用<br><img alt="" height="430" src="https://img-blog.csdnimg.cn/20200407154034666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="563"></p>
+<p>启动并查看效果</p>
+<img alt="" height="400" src="https://img-blog.csdnimg.cn/20200407154441555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700">
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-07T07:45:53.732Z" itemprop="dateUpdated">2020-04-07 15:45:53</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/" target="_blank" rel="external">http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Mr.Zhang">
+            Mr.Zhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/&title=《node|封装功能模块发布npm包》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/&title=《node|封装功能模块发布npm包》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node|封装功能模块发布npm包》 — 一只咸鱼&url=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/04/07/cesium-%E6%A8%A1%E6%8B%9F%E6%89%AB%E6%8F%8F%E7%89%A9%E5%AE%9E%E4%BD%93%E5%8A%9F%E8%83%BD/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">cesium|模拟扫描物实体功能</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">cesium|三维可视化展示</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mr.Zhang &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/&title=《node|封装功能模块发布npm包》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/&title=《node|封装功能模块发布npm包》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《node|封装功能模块发布npm包》 — 一只咸鱼&url=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -21,17 +21,17 @@
     
     
     <meta name="keywords" content="Python">
-    <meta name="description" content="前言随机森林Python版本有很可以调用的库，使用随机森林非常方便，主要用到以下的库 sklearnScikit learn 也简称 sklearn, 是机器学习领域当中最知名的 python 模块之一.Sklearn 包含了很多种机器学习的方式: 分类123456789101112&#96;&#96;&#96;Regression&#96;&#96;&#96;  回归&#96;&#96;&amp;#96">
+    <meta name="description" content="前言随机森林Python版本有很可以调用的库，使用随机森林非常方便，主要用到以下的库 sklearnScikit learn 也简称 sklearn, 是机器学习领域当中最知名的 python 模块之一.Sklearn 包含了很多种机器学习的方式: Classification  分类 Regression  回归 Clustering  非监督分类 Dimensionalityreduction">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python|机器学习之随机森林算法">
 <meta property="og:url" content="http://yoursite.com/2020/04/06/python-%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="前言随机森林Python版本有很可以调用的库，使用随机森林非常方便，主要用到以下的库 sklearnScikit learn 也简称 sklearn, 是机器学习领域当中最知名的 python 模块之一.Sklearn 包含了很多种机器学习的方式: 分类123456789101112&#96;&#96;&#96;Regression&#96;&#96;&#96;  回归&#96;&#96;&amp;#96">
+<meta property="og:description" content="前言随机森林Python版本有很可以调用的库，使用随机森林非常方便，主要用到以下的库 sklearnScikit learn 也简称 sklearn, 是机器学习领域当中最知名的 python 模块之一.Sklearn 包含了很多种机器学习的方式: Classification  分类 Regression  回归 Clustering  非监督分类 Dimensionalityreduction">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdn.net/20170116134958784?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY3htc2Ni/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/80/gravity/SouthEast">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190424175513353.png">
 <meta property="article:published_time" content="2020-04-06T08:41:00.000Z">
-<meta property="article:modified_time" content="2020-04-06T09:02:34.528Z">
+<meta property="article:modified_time" content="2020-04-07T06:38:59.417Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -177,7 +177,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#sklearn"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">sklearn</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#numpy"><span class="post-toc-number">2.</span> <span class="post-toc-text">numpy</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pandas"><span class="post-toc-number">3.</span> <span class="post-toc-text">pandas</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RandomForestRegressor"><span class="post-toc-number">4.</span> <span class="post-toc-text">RandomForestRegressor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义模型"><span class="post-toc-number">5.</span> <span class="post-toc-text">自定义模型</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sklearn"><span class="post-toc-number">2.</span> <span class="post-toc-text">sklearn</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#numpy"><span class="post-toc-number">3.</span> <span class="post-toc-text">numpy</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pandas"><span class="post-toc-number">4.</span> <span class="post-toc-text">pandas</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RandomForestRegressor"><span class="post-toc-number">5.</span> <span class="post-toc-text">RandomForestRegressor</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义模型"><span class="post-toc-number">6.</span> <span class="post-toc-text">自定义模型</span></a></li></ol>
         </nav>
     </aside>
 
@@ -204,9 +204,14 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>随机森林Python版本有很可以调用的库，使用随机森林非常方便，主要用到以下的库</p>
-<h4 id="sklearn"><a href="#sklearn" class="headerlink" title="sklearn"></a>sklearn</h4><p>Scikit learn 也简称 sklearn, 是机器学习领域当中最知名的 python 模块之一.<br>Sklearn 包含了很多种机器学习的方式:</p>
-<figure class="highlight plain"><figcaption><span>分类</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;Regression&#96;&#96;&#96;  回归</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;Clustering&#96;&#96;&#96;  非监督分类</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;Dimensionalityreduction&#96;&#96;&#96;  数据降维</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;Model Selection&#96;&#96;&#96;  模型选择</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;Preprocessing&#96;&#96;&#96;  数据预处理</span><br><span class="line"></span><br><span class="line">Sklearn快速入门：&#96;&#96;&#96;https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;cd5a929bec33</span><br></pre></td></tr></table></figure>
-
+<h3 id="sklearn"><a href="#sklearn" class="headerlink" title="sklearn"></a>sklearn</h3><p>Scikit learn 也简称 sklearn, 是机器学习领域当中最知名的 python 模块之一.<br>Sklearn 包含了很多种机器学习的方式:</p>
+<p><code>Classification</code>  分类</p>
+<p><code>Regression</code>  回归</p>
+<p><code>Clustering</code>  非监督分类</p>
+<p><code>Dimensionalityreduction</code>  数据降维</p>
+<p><code>Model Selection</code>  模型选择</p>
+<p><code>Preprocessing</code>  数据预处理</p>
+<p>Sklearn快速入门：<code>https://www.jianshu.com/p/cd5a929bec33</code></p>
 <h3 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h3><p>numpy（Numerical Python）提供了python对多维数组对象的支持：ndarray，具有矢量运算能力，快速、节省空间。numpy支持高级大量的维度数组与矩阵运算，此外也针对数组运算提供大量的数学函数库。</p>
 <img src="https://img-blog.csdn.net/20170116134958784?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY3htc2Ni/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/80/gravity/SouthEast"  title="">
 
@@ -237,7 +242,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-06T09:02:34.528Z" itemprop="dateUpdated">2020-04-06 17:02:34</time>
+    最后更新时间：<time datetime="2020-04-07T06:38:59.417Z" itemprop="dateUpdated">2020-04-07 14:38:59</time>
 </span><br>
 
 
