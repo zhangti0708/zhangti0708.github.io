@@ -14,32 +14,30 @@
     
     
     
-    <title>cesium|三维可视化展示 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <title>excel|数据处理之自动排序自动加载 | 一只咸鱼 | 努力学习最新姿势！！！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="cesium">
-    <meta name="description" content="前言因工作需要学习cesium有一段时间了，对现有的业务功能进行模块化封装和效果展示。封装完成之后开发一套前端模版，以后项目基本可以基于这个平台做二次开发； 效果展示分为基础功能展示，分析可视化，以及业务功能模块展示  场景控制，地图工具   可视化组件 开源插件 图形插件   控件 地球控制   分析功能 业务封装      前端模版基于封装的sdk的开发模版 集成开源插件，场景控制等">
+    <meta name="keywords" content="excel">
+    <meta name="description" content="前言在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。效果制作下拉选自动排序使用 VLOOKUP() ,HLOOKUP()，RANK() 函数  准备一份数据源表     新建一个sheet，创建城市数据表  1 将城市选项制作成下拉格式：数据-数据有效性-序列-选在范围（数据源表的城市行） 2 feature和">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cesium|三维可视化展示">
-<meta property="og:url" content="http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/index.html">
+<meta property="og:title" content="excel|数据处理之自动排序自动加载">
+<meta property="og:url" content="http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="前言因工作需要学习cesium有一段时间了，对现有的业务功能进行模块化封装和效果展示。封装完成之后开发一套前端模版，以后项目基本可以基于这个平台做二次开发； 效果展示分为基础功能展示，分析可视化，以及业务功能模块展示  场景控制，地图工具   可视化组件 开源插件 图形插件   控件 地球控制   分析功能 业务封装      前端模版基于封装的sdk的开发模版 集成开源插件，场景控制等">
+<meta property="og:description" content="前言在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。效果制作下拉选自动排序使用 VLOOKUP() ,HLOOKUP()，RANK() 函数  准备一份数据源表     新建一个sheet，创建城市数据表  1 将城市选项制作成下拉格式：数据-数据有效性-序列-选在范围（数据源表的城市行） 2 feature和">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191121150608158.gif">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191121150654980.gif">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191121150716729.gif">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200218172256663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407150227843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200407150251383.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-04-06T09:34:00.000Z">
-<meta property="article:modified_time" content="2020-04-08T09:40:01.826Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190201145948295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190201150112751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190201151147469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190201151603166.png">
+<meta property="article:published_time" content="2020-04-08T09:14:00.000Z">
+<meta property="article:modified_time" content="2020-04-08T09:23:27.733Z">
 <meta property="article:author" content="Mr.Zhang">
-<meta property="article:tag" content="cesium">
+<meta property="article:tag" content="excel">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191121150608158.gif">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190201145948295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
     
         <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
     
@@ -134,7 +132,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">cesium|三维可视化展示</div>
+        <div class="flex-col header-title ellipsis">excel|数据处理之自动排序自动加载</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -156,15 +154,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">cesium|三维可视化展示</h1>
+        <h1 class="title">excel|数据处理之自动排序自动加载</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-04-06T09:34:00.000Z" itemprop="datePublished" class="page-time">
-  2020-04-06
+                <time datetime="2020-04-08T09:14:00.000Z" itemprop="datePublished" class="page-time">
+  2020-04-08
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gis/">Gis</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></li></ul>
 
             
         </h5>
@@ -181,21 +179,21 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#效果展示"><span class="post-toc-number">2.</span> <span class="post-toc-text">效果展示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前端模版"><span class="post-toc-number">3.</span> <span class="post-toc-text">前端模版</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#效果"><span class="post-toc-number">2.</span> <span class="post-toc-text">效果</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#制作下拉选自动排序"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">制作下拉选自动排序</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-cesium-三维可视化展示"
+<article id="post-excel-数据处理之自动排序自动加载"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">cesium|三维可视化展示</h1>
+        <h1 class="post-card-title">excel|数据处理之自动排序自动加载</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-04-06 17:34:00" datetime="2020-04-06T09:34:00.000Z"  itemprop="datePublished">2020-04-06</time>
+            <time class="post-time" title="2020-04-08 17:14:00" datetime="2020-04-08T09:14:00.000Z"  itemprop="datePublished">2020-04-08</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gis/">Gis</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></li></ul>
 
 
 
@@ -207,33 +205,31 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>因工作需要学习cesium有一段时间了，对现有的业务功能进行模块化封装和效果展示。封装完成之后开发一套前端模版，以后项目基本可以基于这个平台做二次开发；</p>
-<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p>分为基础功能展示，分析可视化，以及业务功能模块展示</p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><pre><code>在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。</code></pre><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><h5 id="制作下拉选自动排序"><a href="#制作下拉选自动排序" class="headerlink" title="制作下拉选自动排序"></a>制作下拉选自动排序</h5><p>使用 <code>VLOOKUP()</code> ,<code>HLOOKUP()</code>，<code>RANK()</code> 函数</p>
 <ol>
-<li><p>场景控制，地图工具</p>
-<img alt="" class="has" height="400" src="https://img-blog.csdnimg.cn/20191121150608158.gif" width="700">
-</li>
-<li><p>可视化组件 开源插件 图形插件</p>
-<img alt="" class="has" height="400" src="https://img-blog.csdnimg.cn/20191121150654980.gif" width="700">
-</li>
-<li><p>控件 地球控制</p>
-<img alt="" class="has" height="400" src="https://img-blog.csdnimg.cn/20191121150716729.gif" width="700">
-</li>
-<li><p>分析功能 业务封装</p>
-<img alt="" height="400" src="https://img-blog.csdnimg.cn/20200218172256663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700">
-
-
-</li>
+<li>准备一份数据源表</li>
 </ol>
-<h3 id="前端模版"><a href="#前端模版" class="headerlink" title="前端模版"></a>前端模版</h3><p>基于封装的sdk的开发模版 集成开源插件，场景控制等</p>
-<img alt="" height="400" src="https://img-blog.csdnimg.cn/20200407150227843.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700">
+<img alt="" class="has" height="218" src="https://img-blog.csdnimg.cn/20190201145948295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="494">
 
+<ol start="2">
+<li>新建一个sheet，创建城市数据表</li>
+</ol>
+<p><code>1 将城市选项制作成下拉格式：数据-数据有效性-序列-选在范围（数据源表的城市行）</code></p>
+<p><code>2 feature和变量名直接从数据源表按顺序复制过来</code></p>
+<p><code>3 第四列的逻辑：=HLOOKUP(D1,数据表!C1:LD27,2,0) 列名是上海的第二个数。然后依次往下</code></p>
+<p><code>4 第一列逻辑：=RANK(D2,$D$2:$D$27) 第四列从大到小的排名</code></p>
+<img alt="" class="has" height="235" src="https://img-blog.csdnimg.cn/20190201150112751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="458">
 
+<ol start="3">
+<li>自动排序表</li>
+</ol>
+<p><code>1）第一列 手动输入top1-20</code></p>
+<p><code>2）使用 VLOOKUP()函数将城市数据表中对应的序号匹配过来</code></p>
+<p><code>3）完成自动排序</code></p>
+<img alt="" class="has" height="221" src="https://img-blog.csdnimg.cn/20190201151147469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="409">
 
-<img alt="" height="400" src="https://img-blog.csdnimg.cn/20200407150251383.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700">
-
-<p>平台正在完善…</p>
-
+<p>可动态选择查看数据并列出top10，top20的列</p>
+<img alt="" class="has" height="191" src="https://img-blog.csdnimg.cn/20190201151603166.png" width="700">
         </div>
 
         <blockquote class="post-copyright">
@@ -241,12 +237,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-08T09:40:01.826Z" itemprop="dateUpdated">2020-04-08 17:40:01</time>
+    最后更新时间：<time datetime="2020-04-08T09:23:27.733Z" itemprop="dateUpdated">2020-04-08 17:23:27</time>
 </span><br>
 
 
         
-        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/" target="_blank" rel="external">http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/</a>
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" target="_blank" rel="external">http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/</a>
         
     </div>
     
@@ -267,7 +263,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cesium/" rel="tag">cesium</a></li></ul>
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/excel/" rel="tag">excel</a></li></ul>
 
 
             
@@ -277,7 +273,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/&title=《cesium|三维可视化展示》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/&title=《excel|数据处理之自动排序自动加载》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -287,22 +283,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/&title=《cesium|三维可视化展示》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/&title=《excel|数据处理之自动排序自动加载》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cesium|三维可视化展示》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《excel|数据处理之自动排序自动加载》 — 一只咸鱼&url=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -325,18 +321,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2020/04/07/node-%E5%B0%81%E8%A3%85%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97%E5%8F%91%E5%B8%83npm%E5%8C%85/" id="post-prev" class="post-nav-link">
+      <a href="/2020/04/08/cesium-%E4%B8%89%E7%BB%B4%E6%A0%87%E7%BB%98%E5%B7%A5%E5%85%B7/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">node|封装功能模块发布npm包</h4>
+        <h4 class="title">cesium|三维标绘工具</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/04/06/ol-cesium-%E7%96%AB%E6%83%85%E5%8F%AF%E8%A7%86%E5%8C%96%E7%A4%BA%E4%BE%8B/" id="post-next" class="post-nav-link">
+      <a href="/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B9%8B%E7%9B%B8%E5%85%B3%E6%80%A7%E7%B3%BB%E6%95%B0%E5%88%86%E6%9E%90/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">ol-cesium|疫情可视化示例</h4>
+        <h4 class="title">excel| 数据分析之变量相关性分析</h4>
       </a>
     </div>
   
@@ -436,7 +432,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/&title=《cesium|三维可视化展示》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/&title=《excel|数据处理之自动排序自动加载》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -446,22 +442,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/&title=《cesium|三维可视化展示》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/&title=《excel|数据处理之自动排序自动加载》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cesium|三维可视化展示》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《excel|数据处理之自动排序自动加载》 — 一只咸鱼&url=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -472,7 +468,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/06/cesium-%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B1%95%E7%A4%BA/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/" alt="微信分享二维码">
 </div>
 
 
