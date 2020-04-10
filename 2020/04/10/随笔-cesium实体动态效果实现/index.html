@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>随笔|cesium的实体动态效果实现 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="cesium">
+    <meta name="description" content="前言1前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property   原理篇  博客园 ：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yanan-boke&#x2F;p&#x2F;7447997.html  vxtf简书 ：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f0b47997224c 随笔借图 c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随笔|cesium的实体动态效果实现">
+<meta property="og:url" content="http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="一只咸鱼">
+<meta property="og:description" content="前言1前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property   原理篇  博客园 ：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yanan-boke&#x2F;p&#x2F;7447997.html  vxtf简书 ：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f0b47997224c 随笔借图 c">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020041014214639.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-04-10T03:55:00.000Z">
+<meta property="article:modified_time" content="2020-04-10T07:20:44.899Z">
+<meta property="article:author" content="Mr.Zhang">
+<meta property="article:tag" content="cesium">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020041014214639.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+    
+        <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Zhang</h5>
+          <a href="mailto:zhangticcc@163.com" title="zhangticcc@163.com" class="mail">zhangticcc@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangti0708" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/5392412243" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/weixin_40902527" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">随笔|cesium的实体动态效果实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">随笔|cesium的实体动态效果实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-10T03:55:00.000Z" itemprop="datePublished" class="page-time">
+  2020-04-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#随笔"><span class="post-toc-number">2.</span> <span class="post-toc-text">随笔</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Entity封装属性示例"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">Entity封装属性示例 :</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Property"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">Property</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-随笔-cesium实体动态效果实现"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">随笔|cesium的实体动态效果实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-10 11:55:00" datetime="2020-04-10T03:55:00.000Z"  itemprop="datePublished">2020-04-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property</span><br></pre></td></tr></table></figure>
+
+<p> 原理篇</p>
+<p> 博客园 ：<code>https://www.cnblogs.com/yanan-boke/p/7447997.html</code></p>
+<p> vxtf简书 ：<code>https://www.jianshu.com/p/f0b47997224c</code></p>
+<h3 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h3><p>借图<br><img alt="" height="518" src="https://img-blog.csdnimg.cn/2020041014214639.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="662"></p>
+<p>cesium中每一个<code>entity</code>属性都是一个<code>property</code>实例,实例提供了基本的属性方法<code>getValue</code>,<code>setValue</code>以及<code>equals</code>。基于<code>property</code>基类提供<code>positionProperty</code>,<code>materialProperty</code>等拓展类，实现了更多效果和衍生。</p>
+<h5 id="Entity封装属性示例"><a href="#Entity封装属性示例" class="headerlink" title="Entity封装属性示例 :"></a>Entity封装属性示例 :</h5><p>Cesium中提供了<code>defineProperties</code>方法，继承<code>Object.defineProperties</code>新版cesium改成使用Object。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function Entity(options) &#123;</span><br><span class="line">    var id &#x3D; options.id;</span><br><span class="line">    if (!defined(id)) &#123;</span><br><span class="line">        id &#x3D; createGuid();</span><br><span class="line">    &#125;</span><br><span class="line">    this._id &#x3D; id;</span><br><span class="line">    this._name &#x3D; options.name;</span><br><span class="line">    this._description &#x3D; undefined;</span><br><span class="line">    this._position &#x3D; undefined;</span><br><span class="line">    this._rectangle &#x3D; undefined;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Key 1:defineProperties</span><br><span class="line">defineProperties(Entity.prototype, &#123;</span><br><span class="line">    id : &#123;</span><br><span class="line">        get : function() &#123;</span><br><span class="line">            return this._id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F; Key 2:createRawPropertyDescriptor</span><br><span class="line">    name : createRawPropertyDescriptor(&#39;name&#39;),</span><br><span class="line">    &#x2F;&#x2F; Key 3:createPropertyDescriptor</span><br><span class="line">    description : createPropertyDescriptor(&#39;description&#39;),</span><br><span class="line">    &#x2F;&#x2F; Key 4:createPositionPropertyDescriptor</span><br><span class="line">    position : createPositionPropertyDescriptor(&#39;position&#39;),</span><br><span class="line">    &#x2F;&#x2F; Key 5:createPropertyTypeDescriptor</span><br><span class="line">    rectangle : createPropertyTypeDescriptor(&#39;rectangle&#39;, RectangleGraphics)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Cesium中的成员变量和属性方法之间就是一个下划线_，比如成员变量为_id，对应的属性方法为id，这是Cesium中的一个规范。</p>
+<h5 id="Property"><a href="#Property" class="headerlink" title="Property"></a>Property</h5><p>Property基本类型:</p>
+<p>区分:Property都是可以赋值给Entity的任意属性实例。</p>
+<p><code>SampleProperty</code> ：用来通过给定多个不同时间点的Sample，然后在每两个时间点之间进行线性插值的一种Property</p>
+<p><code>TimeIntervalCollectionProperty</code> ：该Property用来指定各个具体的时间段的属性值，每个时间段内的属性值是恒定的，并不会发生变化，除非已经进入到下一个时间段</p>
+<p><code>ConstantProperty</code>：最常用的property，cesium在给实体赋值自动将数值转换成<code>property</code>实例:<code>enity.box.dimensions = new ConstantProperty(new Cesium.Cartesian3(400000.0, 300000.0, 200000.0));</code></p>
+<p><code>CompositeProperty</code> ： 可以把多种不同类型的ConstantProperty、SampleProperty、TimeIntervalCollectionProperty等Property组合在一起来操作。比如前一个时间段需要线性运动，后一段时间再跳跃式运动</p>
+<p>PositionProperty类型 : </p>
+<p>内置的接口和property的基本接口作用一样，作用于position的</p>
+<p>区分：不可实例化，只能用来表示position，拓展property接口</p>
+<p><code>SampledPositionProperty</code>：同<code>SampleProperty</code>作用一样，多了一个位置插值<code>setInterpolationOptions</code>用来表示不同差值的类型:<code>线性插值</code>,<code>Lagrange插值</code>,<code>Hermite插值</code>。</p>
+<p>MaterialProperty类型:</p>
+<p>作用于Material外观材质的，基本材质的property接口。</p>
+<p>区分：只能用来表示Material，拓展property接口</p>
+<p><code>ColorMaterialProperty</code> 示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var colorProperty &#x3D; new Cesium.SampledProperty(Cesium.Color);</span><br><span class="line"></span><br><span class="line">   colorProperty.addSample(Cesium.JulianDate.fromIso8601(&#39;2019-01-01T00:00:00.00Z&#39;), </span><br><span class="line">       new Cesium.Color(0, 1, 0));</span><br><span class="line">   </span><br><span class="line">       colorProperty.addSample(Cesium.JulianDate.fromIso8601(&#39;2019-01-03T00:00:00.00Z&#39;), </span><br><span class="line">       new Cesium.Color(0, 0, 1));</span><br><span class="line"></span><br><span class="line">   blueBox.box.material &#x3D; new Cesium.ColorMaterialProperty(colorProperty);</span><br></pre></td></tr></table></figure>
+
+<p>其他类型的Property:</p>
+<p><code>CallbackProperty</code> ：是自由度最高的一种Property，让用户通过自定义，回调函数，来返回需要的值。回调函数中，用户可以使用time来给定value，也可以以自己的方式给给定。</p>
+<p><code>ReferenceProperty</code> ： 该Property可以直接链接到别的对象的Property上，相当于引用，省得自己构建了。比如这里我创建了一个红色的盒子redBox，希望它和之前的蓝色盒子一起变大</p>
+<p><code>PropertyBag</code> ：可以<code>包装一个对象</code>(JS中的对象概念)，该对象的每一个属性(JS中的属性概念)，都可以作为一个动态的Property。</p>
+<p><code>PropertyArray</code> ： 包装一个对象，内部封装了一个数组。</p>
+<p><code>VelocityOrientationProperty</code> ：该Property用来Entity的position的位置变化，来计算出移动的方向，最后把速度方向输出成<code>Orientation</code>。这里可以实现动态路径绑定跟踪扫描物体。</p>
+<p><code>VelocityVectorProperty</code> ：和<code>VelocityOrientationProperty</code>一样，不过是速度方向输出成一个预设的<code>Vector</code>。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-10T07:20:44.899Z" itemprop="dateUpdated">2020-04-10 15:20:44</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/" target="_blank" rel="external">http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Mr.Zhang">
+            Mr.Zhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cesium/" rel="tag">cesium</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">cesium|primitive图元自定义着色器</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/10/cesium-%E6%B8%A9%E4%B9%A0API/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">随笔|cesiumAPI笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mr.Zhang &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
