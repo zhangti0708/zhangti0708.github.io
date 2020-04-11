@@ -21,19 +21,19 @@
     
     
     <meta name="keywords" content="ol-cesium">
-    <meta name="description" content="前言最近在github上看到ol-cesium的开源库 在ol上集成cesium支持二三维联动。目前只是简单的切换联动，存在比较多的问题。init时候同时创建23d 对性能消耗比较大。基于丁香园的数据做了一个简单的示例 ,用的框架和都是github现成的。 效果            功能比较简单，数据接口需要替换一下 数据爬虫接口本地部署的  1https:&#x2F;&#x2F;blog.cs">
+    <meta name="description" content="前言最近在github上看到ol-cesium的开源库 在ol上集成cesium支持二三维联动。目前只是简单的切换联动，存在比较多的问题。init时候同时创建23d 对性能消耗比较大。 基于丁香园的数据做了一个简单的示例 ,用的框架和都是github现成的。 效果            功能比较简单，数据接口需要替换一下 数据爬虫接口本地部署的  1https:&#x2F;&#x2F;blog.c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ol-cesium|疫情可视化示例">
 <meta property="og:url" content="http://yoursite.com/2020/04/06/ol-cesium-%E7%96%AB%E6%83%85%E5%8F%AF%E8%A7%86%E5%8C%96%E7%A4%BA%E4%BE%8B/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="前言最近在github上看到ol-cesium的开源库 在ol上集成cesium支持二三维联动。目前只是简单的切换联动，存在比较多的问题。init时候同时创建23d 对性能消耗比较大。基于丁香园的数据做了一个简单的示例 ,用的框架和都是github现成的。 效果            功能比较简单，数据接口需要替换一下 数据爬虫接口本地部署的  1https:&#x2F;&#x2F;blog.cs">
+<meta property="og:description" content="前言最近在github上看到ol-cesium的开源库 在ol上集成cesium支持二三维联动。目前只是简单的切换联动，存在比较多的问题。init时候同时创建23d 对性能消耗比较大。 基于丁香园的数据做了一个简单的示例 ,用的框架和都是github现成的。 效果            功能比较简单，数据接口需要替换一下 数据爬虫接口本地部署的  1https:&#x2F;&#x2F;blog.c">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200214172706364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200218163446655.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200214172428899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200214172501398.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-04-06T09:26:00.000Z">
-<meta property="article:modified_time" content="2020-04-07T06:40:25.275Z">
+<meta property="article:modified_time" content="2020-04-11T00:45:02.245Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="ol-cesium">
 <meta name="twitter:card" content="summary">
@@ -205,7 +205,8 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><pre><code>最近在github上看到ol-cesium的开源库 在ol上集成cesium支持二三维联动。目前只是简单的切换联动，存在比较多的问题。init时候同时创建23d 对性能消耗比较大。</code></pre><p>基于丁香园的数据做了一个简单的示例 ,用的框架和都是github现成的。</p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>最近在github上看到ol-cesium的开源库 在ol上集成cesium支持二三维联动。目前只是简单的切换联动，存在比较多的问题。init时候同时创建23d 对性能消耗比较大。</code></p>
+<p>基于丁香园的数据做了一个简单的示例 ,用的框架和都是github现成的。</p>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><img alt="" height="430" src="https://img-blog.csdnimg.cn/20200214172706364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="800">
 
 
@@ -231,7 +232,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-07T06:40:25.275Z" itemprop="dateUpdated">2020-04-07 14:40:25</time>
+    最后更新时间：<time datetime="2020-04-11T00:45:02.245Z" itemprop="dateUpdated">2020-04-11 08:45:02</time>
 </span><br>
 
 

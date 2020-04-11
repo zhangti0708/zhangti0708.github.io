@@ -21,19 +21,19 @@
     
     
     <meta name="keywords" content="excel">
-    <meta name="description" content="前言在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。效果制作下拉选自动排序使用 VLOOKUP() ,HLOOKUP()，RANK() 函数  准备一份数据源表     新建一个sheet，创建城市数据表  1 将城市选项制作成下拉格式：数据-数据有效性-序列-选在范围（数据源表的城市行） 2 feature和">
+    <meta name="description" content="前言在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。 效果制作下拉选自动排序使用 VLOOKUP() ,HLOOKUP()，RANK() 函数  准备一份数据源表     新建一个sheet，创建城市数据表  1 将城市选项制作成下拉格式：数据-数据有效性-序列-选在范围（数据源表的城市行） 2 feature">
 <meta property="og:type" content="article">
 <meta property="og:title" content="excel|数据处理之自动排序自动加载">
 <meta property="og:url" content="http://yoursite.com/2020/04/08/excel-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%8E%92%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8A%A0%E8%BD%BD/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="前言在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。效果制作下拉选自动排序使用 VLOOKUP() ,HLOOKUP()，RANK() 函数  准备一份数据源表     新建一个sheet，创建城市数据表  1 将城市选项制作成下拉格式：数据-数据有效性-序列-选在范围（数据源表的城市行） 2 feature和">
+<meta property="og:description" content="前言在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。 效果制作下拉选自动排序使用 VLOOKUP() ,HLOOKUP()，RANK() 函数  准备一份数据源表     新建一个sheet，创建城市数据表  1 将城市选项制作成下拉格式：数据-数据有效性-序列-选在范围（数据源表的城市行） 2 feature">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190201145948295.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190201150112751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190201151147469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190201151603166.png">
 <meta property="article:published_time" content="2020-04-08T09:14:00.000Z">
-<meta property="article:modified_time" content="2020-04-08T09:23:27.733Z">
+<meta property="article:modified_time" content="2020-04-11T00:44:03.071Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="excel">
 <meta name="twitter:card" content="summary">
@@ -205,7 +205,8 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><pre><code>在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。</code></pre><h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><h5 id="制作下拉选自动排序"><a href="#制作下拉选自动排序" class="headerlink" title="制作下拉选自动排序"></a>制作下拉选自动排序</h5><p>使用 <code>VLOOKUP()</code> ,<code>HLOOKUP()</code>，<code>RANK()</code> 函数</p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>在处理数据时，如果量级不是很大的话，excel的数据透视表比mysql之类的数据库要方便很多，这里通过数据透视筛选完成之后进行动态展示。</code></p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><h5 id="制作下拉选自动排序"><a href="#制作下拉选自动排序" class="headerlink" title="制作下拉选自动排序"></a>制作下拉选自动排序</h5><p>使用 <code>VLOOKUP()</code> ,<code>HLOOKUP()</code>，<code>RANK()</code> 函数</p>
 <ol>
 <li>准备一份数据源表</li>
 </ol>
@@ -237,7 +238,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-08T09:23:27.733Z" itemprop="dateUpdated">2020-04-08 17:23:27</time>
+    最后更新时间：<time datetime="2020-04-11T00:44:03.071Z" itemprop="dateUpdated">2020-04-11 08:44:03</time>
 </span><br>
 
 

@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190104103837219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190104104204104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-04-06T07:10:00.000Z">
-<meta property="article:modified_time" content="2020-04-08T10:50:35.957Z">
+<meta property="article:modified_time" content="2020-04-11T00:54:59.463Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -222,21 +222,21 @@
 <p>示例 ：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;restapi.amap.com&#x2F;v3&#x2F;place&#x2F;text?key&#x3D;4b86820a7590de60e4f81f53e59ae17f&amp;citylimit&#x3D;true&amp;output&#x3D;json&amp;keywords&#x3D;中山陵景区&amp;city&#x3D;南京</span><br></pre></td></tr></table></figure>
 
-<p>返回结果为json字符串<br><img alt="" class="has" height="250" src="https://img-blog.csdnimg.cn/2019010410201027.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1200"><br>提取景区/小区的<code>id</code>：<code>B0FFHVEECG</code></p>
+<p>返回结果为json字符串<br><img alt="" class="has" height="250" src="https://img-blog.csdnimg.cn/2019010410201027.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700"><br>提取景区/小区的<code>id</code>：<code>B0FFHVEECG</code></p>
 <h6 id="爬取方案"><a href="#爬取方案" class="headerlink" title="爬取方案"></a>爬取方案</h6><p>方案1 ：<br>然后通过poiid调用另外一个接口查询该景区/小区</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;ditu.amap.com&#x2F;detail&#x2F;get&#x2F;detail?id&#x3D;B0FFHVEECG</span><br></pre></td></tr></table></figure>
 
 <p>参数 <code>id</code> 填写上面获取到的 poiid=<code>B0FFHVEECG</code></p>
-<p>请求返回结果：<br><img alt="" class="has" height="604" src="https://img-blog.csdnimg.cn/2019010410383526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1200"><br>将返回的结果转成json然后逐层提取出来</p>
+<p>请求返回结果：<br><img alt="" class="has" height="430" src="https://img-blog.csdnimg.cn/2019010410383526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700"><br>将返回的结果转成json然后逐层提取出来</p>
 <p>存入数据库或者csv文档</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def info(self, response):</span><br><span class="line">    meta &#x3D; response.meta</span><br><span class="line">    data &#x3D; json.loads(response.text)</span><br><span class="line">    print(data)</span><br><span class="line">    try:</span><br><span class="line">        if data[&quot;status&quot;] &#x3D;&#x3D; &quot;1&quot;:</span><br><span class="line">            spec &#x3D; data[&quot;data&quot;][&quot;spec&quot;]</span><br><span class="line">            border &#x3D; spec[&quot;mining_shape&quot;][&quot;shape&quot;]</span><br><span class="line">            print(&quot;border &quot;,border)</span><br><span class="line">            AllCityDataSQL().UpdateXcJingDianiData((meta[&quot;id&quot;]),border)</span><br><span class="line">    except:</span><br><span class="line">        print(&quot;查询错误~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&quot; + meta[&quot;url&quot;])</span><br></pre></td></tr></table></figure>
 
 <p>方案2：</p>
 <p> 通过<code>poiid</code>查找边界信息，红色部分可以替换成其他城市代码（身份证前6位）和景区id</p>
 <p>接口地址：<code>https://gaode.com/service/poiInfo?query_type=IDQ&amp;pagesize=20&amp;pagenum=1&amp;qii=true&amp;cluster_state=5&amp;need_utd=true&amp;utd_sceneid=1000&amp;div=PC1000&amp;addr_poi_merge=true&amp;is_classify=true&amp;zoom=11&amp;id=B022F0071G&amp;city=341003</code></p>
-<p>请求返回结果：<br><img alt="" class="has" height="604" src="https://img-blog.csdnimg.cn/20190104103837219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1200"></p>
+<p>请求返回结果：<br><img alt="" class="has" height="430" src="https://img-blog.csdnimg.cn/20190104103837219.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700"></p>
 <p><code>value</code>字段 由一堆坐标组成的数值</p>
-<img alt="" class="has" height="331" src="https://img-blog.csdnimg.cn/20190104104204104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="1200">
+<img alt="" class="has" height="331" src="https://img-blog.csdnimg.cn/20190104104204104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700">
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">将返回的结果转成json ，然后逐层提取出来</span><br><span class="line">返回的value字段值还需修改一下，将_换成，才能使用</span><br><span class="line">存入数据库或者csv文档</span><br></pre></td></tr></table></figure>
 
@@ -254,7 +254,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-08T10:50:35.957Z" itemprop="dateUpdated">2020-04-08 18:50:35</time>
+    最后更新时间：<time datetime="2020-04-11T00:54:59.463Z" itemprop="dateUpdated">2020-04-11 08:54:59</time>
 </span><br>
 
 

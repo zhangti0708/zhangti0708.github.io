@@ -14,23 +14,23 @@
     
     
     
-    <title>cesium|primitive图元自定义着色器 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <title>cesium| Primitive图元自定义着色器(1) | 一只咸鱼 | 努力学习最新姿势！！！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="cesium">
-    <meta name="description" content="前言Primitive是cesium核心api之一，与entity方式绘制方式(基于数据)不同primitive更接近渲染引擎底层。entity适合以数据绘制实体，而primitive更适合图形学，有过webgl经验的从业者上手。primitive绘制的图形比entity添加的实体性能更好，webgl特性使primitive能绘制更多样式的图形。 对entity和primitive与scene之间">
+    <meta name="description" content="前言Primitive是cesium核心api之一，与entity方式绘制方式(基于数据)不同，primitive更接近渲染引擎底层。entity适合以数据绘制实体，而primitive更适合图形学对有webgl经验的更亲和。primitive绘制的图形比entity添加的实体性能更好，webgl特性使primitive能绘制更多样式的图形。 对entity和primitive与scene之间的关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cesium|primitive图元自定义着色器">
+<meta property="og:title" content="cesium| Primitive图元自定义着色器(1)">
 <meta property="og:url" content="http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="前言Primitive是cesium核心api之一，与entity方式绘制方式(基于数据)不同primitive更接近渲染引擎底层。entity适合以数据绘制实体，而primitive更适合图形学，有过webgl经验的从业者上手。primitive绘制的图形比entity添加的实体性能更好，webgl特性使primitive能绘制更多样式的图形。 对entity和primitive与scene之间">
+<meta property="og:description" content="前言Primitive是cesium核心api之一，与entity方式绘制方式(基于数据)不同，primitive更接近渲染引擎底层。entity适合以数据绘制实体，而primitive更适合图形学对有webgl经验的更亲和。primitive绘制的图形比entity添加的实体性能更好，webgl特性使primitive能绘制更多样式的图形。 对entity和primitive与scene之间的关">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200410174714680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-04-10T07:21:00.000Z">
-<meta property="article:modified_time" content="2020-04-10T10:05:58.992Z">
+<meta property="article:modified_time" content="2020-04-11T14:52:01.633Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="cesium">
 <meta name="twitter:card" content="summary">
@@ -129,7 +129,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">cesium|primitive图元自定义着色器</div>
+        <div class="flex-col header-title ellipsis">cesium| Primitive图元自定义着色器(1)</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -151,13 +151,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">cesium|primitive图元自定义着色器</h1>
+        <h1 class="title">cesium| Primitive图元自定义着色器(1)</h1>
         <h5 class="subtitle">
             
                 <time datetime="2020-04-10T07:21:00.000Z" itemprop="datePublished" class="page-time">
   2020-04-10
 </time>
 
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gis/">Gis</a></li></ul>
 
             
         </h5>
@@ -183,11 +185,13 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">cesium|primitive图元自定义着色器</h1>
+        <h1 class="post-card-title">cesium| Primitive图元自定义着色器(1)</h1>
         <div class="post-meta">
             <time class="post-time" title="2020-04-10 15:21:00" datetime="2020-04-10T07:21:00.000Z"  itemprop="datePublished">2020-04-10</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Gis/">Gis</a></li></ul>
+
 
 
             
@@ -198,7 +202,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>Primitive是cesium核心api之一，与entity方式绘制方式(基于数据)不同primitive更接近渲染引擎底层。entity适合以数据绘制实体，而primitive更适合图形学，有过webgl经验的从业者上手。primitive绘制的图形比entity添加的实体性能更好，webgl特性使primitive能绘制更多样式的图形。</code></p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>Primitive是cesium核心api之一，与entity方式绘制方式(基于数据)不同，primitive更接近渲染引擎底层。entity适合以数据绘制实体，而primitive更适合图形学对有webgl经验的更亲和。primitive绘制的图形比entity添加的实体性能更好，webgl特性使primitive能绘制更多样式的图形。</code></p>
 <p>对entity和primitive与scene之间的关联可以参考 【cesiumAPI笔记篇】</p>
 <h4 id="Primitive"><a href="#Primitive" class="headerlink" title="Primitive"></a>Primitive</h4><p>特性</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1 由两部分组成</span><br><span class="line">（1）几何形状（Geometry）：定义了Primitive的结构，例如三角形、线条、点等</span><br><span class="line">（2）外观（Appearance ）：定义Primitive的着色（Sharding），包括GLSL（OpenGL着色语言，OpenGL ShadingLanguage）顶点着色器和片段着色器（ vertex and fragment shaders），以及渲染状态（render state）</span><br><span class="line"></span><br><span class="line">2 使用Geometry和Appearance 具有以下优势：</span><br><span class="line">（1）性能：绘制大量Primitive时，可以将其合并为单个Geometry以减轻CPU负担、更好的使用GPU。合并Primitive由web worker线程执行，UI保持响应性</span><br><span class="line">（2）灵活性：Geometry与Appearance 解耦，两者可以分别进行修改</span><br><span class="line">（3）低级别访问：易于编写GLSL 顶点、片段着色器、使用自定义的渲染状态</span><br><span class="line"></span><br><span class="line">3 同时具有以下劣势：</span><br><span class="line">（1）需要编写更多地代码</span><br><span class="line">（2）需要对图形编程有更多的理解，特别是OpenGL的知识</span><br></pre></td></tr></table></figure>
@@ -209,7 +213,7 @@
 <h5 id="Geometry"><a href="#Geometry" class="headerlink" title="Geometry"></a>Geometry</h5><p>创建一个圆锥几何图形</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 构造geometry</span><br><span class="line">var cylinderGeometry &#x3D; new Cesium.CylinderGeometry(&#123;</span><br><span class="line">    length: length,</span><br><span class="line">    topRadius: 0.0,</span><br><span class="line">    bottomRadius: length * 0.5,</span><br><span class="line">    vertexFormat: Cesium.MaterialAppearance.MaterialSupport.TEXTURED.vertexFormat&#125;);</span><br><span class="line">2. 创建GeometryInstance</span><br><span class="line">var redCone &#x3D; new Cesium.GeometryInstance(&#123;</span><br><span class="line">    geometry: cylinderGeometry, &#x2F;&#x2F;geomtry类型</span><br><span class="line">    modelMatrix: modelMatrix, &#x2F;&#x2F;模型矩阵 调整矩阵的位置和方向</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h5 id="shader着色器"><a href="#shader着色器" class="headerlink" title="shader着色器"></a>shader着色器</h5><p>定义glsl着色器</p>
+<h5 id="shader着色器"><a href="#shader着色器" class="headerlink" title="shader着色器"></a>shader着色器</h5><p>定义glsl代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">let source &#x3D;</span><br><span class="line">&#x2F;&#x2F;传入的动态数值</span><br><span class="line">&#96;uniform vec4 color; </span><br><span class="line"> uniform float repeat; </span><br><span class="line"> uniform float offset; </span><br><span class="line"> uniform float thickness;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;设置图形外观材质</span><br><span class="line">czm_material czm_getMaterial(czm_materialInput materialInput)&#123;</span><br><span class="line">    czm_material material &#x3D; czm_getDefaultMaterial(materialInput); &#x2F;&#x2F;获取内置的默认材质</span><br><span class="line">    float sp &#x3D; 1.0&#x2F;repeat; &#x2F;&#x2F;重复贴图</span><br><span class="line">    vec2 st &#x3D; materialInput.st; &#x2F;&#x2F;二维纹理坐标</span><br><span class="line">    float dis &#x3D; distance(st, vec2(0.5)); &#x2F;&#x2F;计算距离</span><br><span class="line">    float m &#x3D; mod(dis + offset, sp); &#x2F;&#x2F;间隔</span><br><span class="line">    float a &#x3D; step(sp*(1.0-thickness), m);&#x2F;&#x2F;线条拼色 </span><br><span class="line">	&#x2F;&#x2F;修改材质</span><br><span class="line">    material.diffuse &#x3D; color.rgb;</span><br><span class="line">    material.alpha &#x3D; a * color.a;</span><br><span class="line">	return material;</span><br><span class="line">&#125;&#96;</span><br></pre></td></tr></table></figure>
 
 <p>自定义shader着色器 和 Material ：<code>https://www.cnblogs.com/fuckgiser/p/6171245.html</code></p>
@@ -230,7 +234,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-10T10:05:58.992Z" itemprop="dateUpdated">2020-04-10 18:05:58</time>
+    最后更新时间：<time datetime="2020-04-11T14:52:01.633Z" itemprop="dateUpdated">2020-04-11 22:52:01</time>
 </span><br>
 
 
@@ -266,7 +270,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&title=《cesium|primitive图元自定义着色器》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&title=《cesium| Primitive图元自定义着色器(1)》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -276,7 +280,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&title=《cesium|primitive图元自定义着色器》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&title=《cesium| Primitive图元自定义着色器(1)》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -286,7 +290,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cesium|primitive图元自定义着色器》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cesium| Primitive图元自定义着色器(1)》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -311,14 +315,21 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/04/10/cesium-postProcessStages%E5%90%8E%E6%9C%9F%E5%A4%84%E7%90%86%E6%B7%BB%E5%8A%A0%E7%89%B9%E6%95%88/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">cesium| PostProcessStage后期处理</h4>
+      </a>
+    </div>
   
 
   
     <div class="waves-block waves-effect next">
       <a href="/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">随笔|cesium的实体动态效果实现</h4>
+        <h4 class="title">随笔|cesium的Entity动态效果实现</h4>
       </a>
     </div>
   
@@ -418,7 +429,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&title=《cesium|primitive图元自定义着色器》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&title=《cesium| Primitive图元自定义着色器(1)》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -428,7 +439,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&title=《cesium|primitive图元自定义着色器》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&title=《cesium| Primitive图元自定义着色器(1)》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -438,7 +449,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cesium|primitive图元自定义着色器》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cesium| Primitive图元自定义着色器(1)》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

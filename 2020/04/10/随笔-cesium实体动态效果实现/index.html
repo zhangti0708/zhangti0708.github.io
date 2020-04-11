@@ -14,23 +14,23 @@
     
     
     
-    <title>随笔|cesium的实体动态效果实现 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <title>随笔|cesium的Entity动态效果实现 | 一只咸鱼 | 努力学习最新姿势！！！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="cesium">
-    <meta name="description" content="前言1前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property   原理篇  博客园 ：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yanan-boke&#x2F;p&#x2F;7447997.html  vxtf简书 ：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f0b47997224c 随笔借图 c">
+    <meta name="description" content="前言前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property  原理篇  博客园 ：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yanan-boke&#x2F;p&#x2F;7447997.html  vxtf简书 ：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f0b47997224c 随笔借图 ces">
 <meta property="og:type" content="article">
-<meta property="og:title" content="随笔|cesium的实体动态效果实现">
+<meta property="og:title" content="随笔|cesium的Entity动态效果实现">
 <meta property="og:url" content="http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="前言1前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property   原理篇  博客园 ：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yanan-boke&#x2F;p&#x2F;7447997.html  vxtf简书 ：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f0b47997224c 随笔借图 c">
+<meta property="og:description" content="前言前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property  原理篇  博客园 ：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;yanan-boke&#x2F;p&#x2F;7447997.html  vxtf简书 ：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;f0b47997224c 随笔借图 ces">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2020041014214639.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-04-10T03:55:00.000Z">
-<meta property="article:modified_time" content="2020-04-10T07:20:44.899Z">
+<meta property="article:modified_time" content="2020-04-11T00:42:56.316Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="cesium">
 <meta name="twitter:card" content="summary">
@@ -129,7 +129,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">随笔|cesium的实体动态效果实现</div>
+        <div class="flex-col header-title ellipsis">随笔|cesium的Entity动态效果实现</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -151,7 +151,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">随笔|cesium的实体动态效果实现</h1>
+        <h1 class="title">随笔|cesium的Entity动态效果实现</h1>
         <h5 class="subtitle">
             
                 <time datetime="2020-04-10T03:55:00.000Z" itemprop="datePublished" class="page-time">
@@ -185,7 +185,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">随笔|cesium的实体动态效果实现</h1>
+        <h1 class="post-card-title">随笔|cesium的Entity动态效果实现</h1>
         <div class="post-meta">
             <time class="post-time" title="2020-04-10 11:55:00" datetime="2020-04-10T03:55:00.000Z"  itemprop="datePublished">2020-04-10</time>
 
@@ -202,8 +202,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property</span><br></pre></td></tr></table></figure>
-
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>前面讲了cesium的API学习大概思路，对一些api不是很了解的可以基于那个框架去延伸。这路在看下cesium中对实体动态修改提供的内置对象 property</code></p>
 <p> 原理篇</p>
 <p> 博客园 ：<code>https://www.cnblogs.com/yanan-boke/p/7447997.html</code></p>
 <p> vxtf简书 ：<code>https://www.jianshu.com/p/f0b47997224c</code></p>
@@ -244,7 +243,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-10T07:20:44.899Z" itemprop="dateUpdated">2020-04-10 15:20:44</time>
+    最后更新时间：<time datetime="2020-04-11T00:42:56.316Z" itemprop="dateUpdated">2020-04-11 08:42:56</time>
 </span><br>
 
 
@@ -280,7 +279,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的Entity动态效果实现》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -290,7 +289,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的Entity动态效果实现》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -300,7 +299,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《随笔|cesium的Entity动态效果实现》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -330,7 +329,7 @@
     <div class="waves-block waves-effect prev">
       <a href="/2020/04/10/cesium-primitive%E5%9B%BE%E5%85%83%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9D%80%E8%89%B2%E5%99%A8/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">cesium|primitive图元自定义着色器</h4>
+        <h4 class="title">cesium| Primitive图元自定义着色器(1)</h4>
       </a>
     </div>
   
@@ -439,7 +438,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的Entity动态效果实现》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -449,7 +448,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&title=《随笔|cesium的Entity动态效果实现》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -459,7 +458,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《随笔|cesium的实体动态效果实现》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《随笔|cesium的Entity动态效果实现》 — 一只咸鱼&url=http://yoursite.com/2020/04/10/%E9%9A%8F%E7%AC%94-cesium%E5%AE%9E%E4%BD%93%E5%8A%A8%E6%80%81%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

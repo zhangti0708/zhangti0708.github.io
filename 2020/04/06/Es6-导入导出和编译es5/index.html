@@ -14,22 +14,22 @@
     
     
     
-    <title>Es6 | 语法和编译es5 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <title>Es6 | 异步,导出导入,编译es5详解 | 一只咸鱼 | 努力学习最新姿势！！！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="js">
-    <meta name="description" content="ES6ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。ES6 主要是为了解决 ES5 的先天不足，比如 JavaScript 里并没有类的概念，但是目前浏览器的 JavaScript 是 ES5 版本，大多数高版本的浏览器也支持 ES6，不过只实现了 ES6 的部分特性和功能。 export在es6中一个文件可以默认为一个模块，模块">
+    <meta name="description" content="ES6ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。 ES6 主要是为了解决 ES5 的先天不足，比如 JavaScript 里并没有类的概念，但是目前浏览器的 JavaScript 是 ES5 版本，大多数高版本的浏览器也支持 ES6，不过只实现了 ES6 的部分特性和功能。 async和await这里讲一下async和awai">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Es6 | 语法和编译es5">
+<meta property="og:title" content="Es6 | 异步,导出导入,编译es5详解">
 <meta property="og:url" content="http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/index.html">
 <meta property="og:site_name" content="一只咸鱼">
-<meta property="og:description" content="ES6ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。ES6 主要是为了解决 ES5 的先天不足，比如 JavaScript 里并没有类的概念，但是目前浏览器的 JavaScript 是 ES5 版本，大多数高版本的浏览器也支持 ES6，不过只实现了 ES6 的部分特性和功能。 export在es6中一个文件可以默认为一个模块，模块">
+<meta property="og:description" content="ES6ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。 ES6 主要是为了解决 ES5 的先天不足，比如 JavaScript 里并没有类的概念，但是目前浏览器的 JavaScript 是 ES5 版本，大多数高版本的浏览器也支持 ES6，不过只实现了 ES6 的部分特性和功能。 async和await这里讲一下async和awai">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-06T09:11:00.000Z">
-<meta property="article:modified_time" content="2020-04-06T09:19:02.629Z">
+<meta property="article:modified_time" content="2020-04-11T00:53:59.792Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="js">
 <meta name="twitter:card" content="summary">
@@ -127,7 +127,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Es6 | 语法和编译es5</div>
+        <div class="flex-col header-title ellipsis">Es6 | 异步,导出导入,编译es5详解</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -149,7 +149,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Es6 | 语法和编译es5</h1>
+        <h1 class="title">Es6 | 异步,导出导入,编译es5详解</h1>
         <h5 class="subtitle">
             
                 <time datetime="2020-04-06T09:11:00.000Z" itemprop="datePublished" class="page-time">
@@ -174,7 +174,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6"><span class="post-toc-number">1.</span> <span class="post-toc-text">ES6</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#export"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">export</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#import"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">import</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#babel"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">babel</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ES6"><span class="post-toc-number">1.</span> <span class="post-toc-text">ES6</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#async和await"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">async和await</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#async"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">async</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#await"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">await</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#export"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">export</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#import"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">import</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#babel"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">babel</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -183,7 +183,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Es6 | 语法和编译es5</h1>
+        <h1 class="post-card-title">Es6 | 异步,导出导入,编译es5详解</h1>
         <div class="post-meta">
             <time class="post-time" title="2020-04-06 17:11:00" datetime="2020-04-06T09:11:00.000Z"  itemprop="datePublished">2020-04-06</time>
 
@@ -200,7 +200,20 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><p>ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。<br>ES6 主要是为了解决 ES5 的先天不足，比如 JavaScript 里并没有类的概念，但是目前浏览器的 JavaScript 是 ES5 版本，大多数高版本的浏览器也支持 ES6，不过只实现了 ES6 的部分特性和功能。</p>
+            <h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><p><code>ES6， 全称 ECMAScript 6.0 ，是 JavaScript 的下一个版本标准，2015.06 发版。
+ES6 主要是为了解决 ES5 的先天不足，比如 JavaScript 里并没有类的概念，但是目前浏览器的 JavaScript 是 ES5 版本，大多数高版本的浏览器也支持 ES6，不过只实现了 ES6 的部分特性和功能。</code></p>
+<h4 id="async和await"><a href="#async和await" class="headerlink" title="async和await"></a>async和await</h4><p>这里讲一下async和await虽然是es7新出的但是用的比较多。<br>关于异步处理，ES5的回调使我们陷入地狱，ES6的Promise使我们脱离魔障，终于、ES7的async-await带我们走向光明。现在就看一下async-await</p>
+<p>基本语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">async function basicDemo() &#123;</span><br><span class="line">    let result &#x3D; await Math.random();</span><br><span class="line">    console.log(result);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">basicDemo();</span><br></pre></td></tr></table></figure>
+
+<h5 id="async"><a href="#async" class="headerlink" title="async"></a>async</h5><p>async用来表示函数是异步的，定义的函数会返回一个promise对象，可以使用then方法添加回调函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">async function demo01() &#123;</span><br><span class="line">    return 123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">demo01().then(val &#x3D;&gt; &#123;</span><br><span class="line">    console.log(val);&#x2F;&#x2F; 123</span><br><span class="line">&#125;);</span><br><span class="line">若 async 定义的函数有返回值，return 123;相当于Promise.resolve(123),没有声明式的 return则相当于执行了Promise.resolve();</span><br></pre></td></tr></table></figure>
+
+<h5 id="await"><a href="#await" class="headerlink" title="await"></a>await</h5><p>await 可以理解为是 async wait 的简写。await 必须出现在 async 函数内部，不能单独使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function notAsyncFunc() &#123;</span><br><span class="line">    await Math.random();</span><br><span class="line">&#125;</span><br><span class="line">notAsyncFunc();</span><br></pre></td></tr></table></figure>
+<p>await 后面可以跟任何的JS 表达式。虽然说 await 可以等很多类型的东西，但是它最主要的意图是用来等待 Promise 对象的状态被 resolved。如果await的是 promise对象会造成异步函数停止执行并且等待 promise 的解决,如果等的是正常的表达式则立即执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function sleep(second) &#123;</span><br><span class="line">    return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">        setTimeout(() &#x3D;&gt; &#123;</span><br><span class="line">            resolve(&#39; enough sleep~&#39;);</span><br><span class="line">        &#125;, second);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">function normalFunc() &#123;</span><br><span class="line">    console.log(&#39;normalFunc&#39;);</span><br><span class="line">&#125;</span><br><span class="line">async function awaitDemo() &#123;</span><br><span class="line">    await normalFunc();</span><br><span class="line">    console.log(&#39;something, ~~&#39;);</span><br><span class="line">    let result &#x3D; await sleep(2000);</span><br><span class="line">    console.log(result);&#x2F;&#x2F; 两秒之后会被打印出来</span><br><span class="line">&#125;</span><br><span class="line">awaitDemo();</span><br><span class="line">&#x2F;&#x2F; normalFunc</span><br><span class="line">&#x2F;&#x2F; VM4036:13 something, ~~</span><br><span class="line">&#x2F;&#x2F; VM4036:15  enough sleep~</span><br></pre></td></tr></table></figure>
+
 <h4 id="export"><a href="#export" class="headerlink" title="export"></a>export</h4><p>在es6中一个文件可以默认为一个模块，模块通过export向外暴露接口，实现模块间交互等功能</p>
 <p>相关语法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">export var m &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F; 等价于</span><br><span class="line">var m &#x3D; 1;</span><br><span class="line">export &#123; m &#125;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; 导出多个</span><br><span class="line">var a &#x3D; 1;</span><br><span class="line">var b &#x3D; 2;</span><br><span class="line">var c &#x3D; 3;</span><br><span class="line">export &#123; a, b, c &#125;</span><br><span class="line">&#x2F;&#x2F; 导出对象</span><br><span class="line">export const student &#x3D; &#123;</span><br><span class="line">  name: &#39;Megan&#39;,</span><br><span class="line">  age: 18</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 导出函数</span><br><span class="line">export function add(a, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;导出接口别名</span><br><span class="line">const person &#x3D; &#123;</span><br><span class="line">  name: &#39;张呆&#39;,</span><br><span class="line">  age: 18,</span><br><span class="line">  gender: &quot;male&quot;</span><br><span class="line">&#125;</span><br><span class="line">export &#123; person as boy &#125;</span><br></pre></td></tr></table></figure>
@@ -236,7 +249,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-06T09:19:02.629Z" itemprop="dateUpdated">2020-04-06 17:19:02</time>
+    最后更新时间：<time datetime="2020-04-11T00:53:59.792Z" itemprop="dateUpdated">2020-04-11 08:53:59</time>
 </span><br>
 
 
@@ -272,7 +285,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&title=《Es6 | 语法和编译es5》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&title=《Es6 | 异步,导出导入,编译es5详解》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -282,7 +295,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&title=《Es6 | 语法和编译es5》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&title=《Es6 | 异步,导出导入,编译es5详解》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -292,7 +305,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Es6 | 语法和编译es5》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Es6 | 异步,导出导入,编译es5详解》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -431,7 +444,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&title=《Es6 | 语法和编译es5》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&title=《Es6 | 异步,导出导入,编译es5详解》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -441,7 +454,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&title=《Es6 | 语法和编译es5》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&title=《Es6 | 异步,导出导入,编译es5详解》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -451,7 +464,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Es6 | 语法和编译es5》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Es6 | 异步,导出导入,编译es5详解》 — 一只咸鱼&url=http://yoursite.com/2020/04/06/Es6-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E5%92%8C%E7%BC%96%E8%AF%91es5/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
