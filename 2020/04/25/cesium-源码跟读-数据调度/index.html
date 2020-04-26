@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>cesium|源码跟读 - cesium的数据调度渲染过程 | 一只咸鱼 | 努力学习最新姿势！！！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Cesium">
+    <meta name="description" content="前言学习源码的时候有一个好的学习方案往往能事半功倍。 在跟读源码时定下一个学习目标，记录学习过程。 比如需要了解那个API的初始化过程来作为学习导向。 这篇已cesium如何渲染地形和影像为学习导向来研究cesium的数据调度机制 数据调度之前讲过cesiumWidget如何初始化的，里边说到场景内的数据会自动做每一帧的循环渲染。 startRenderLoop 开始渲染三维窗口内的对象 通过re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cesium|源码跟读 - cesium的数据调度渲染过程">
+<meta property="og:url" content="http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/index.html">
+<meta property="og:site_name" content="一只咸鱼">
+<meta property="og:description" content="前言学习源码的时候有一个好的学习方案往往能事半功倍。 在跟读源码时定下一个学习目标，记录学习过程。 比如需要了解那个API的初始化过程来作为学习导向。 这篇已cesium如何渲染地形和影像为学习导向来研究cesium的数据调度机制 数据调度之前讲过cesiumWidget如何初始化的，里边说到场景内的数据会自动做每一帧的循环渲染。 startRenderLoop 开始渲染三维窗口内的对象 通过re">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200426132348938.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421154631106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421155057600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421161422660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020042116161095.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421162355704.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020042116225527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421162537858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421162930976.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200426141531331.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421162930976.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421163958958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020042116402677.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421164837303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421165258564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421165839696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421170017504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421172000540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421172046613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200426142646944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-04-25T15:41:00.000Z">
+<meta property="article:modified_time" content="2020-04-26T06:33:04.460Z">
+<meta property="article:author" content="Mr.Zhang">
+<meta property="article:tag" content="Cesium">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200426132348938.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+    
+        <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Mr.Zhang</h5>
+          <a href="mailto:zhangticcc@163.com" title="zhangticcc@163.com" class="mail">zhangticcc@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zhangti0708" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/5392412243" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/weixin_40902527" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">cesium|源码跟读 - cesium的数据调度渲染过程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">cesium|源码跟读 - cesium的数据调度渲染过程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-04-25T15:41:00.000Z" itemprop="datePublished" class="page-time">
+  2020-04-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据调度"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据调度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#调度说明"><span class="post-toc-number">2.0.0.1.</span> <span class="post-toc-text">调度说明</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#类关系图"><span class="post-toc-number">2.0.0.2.</span> <span class="post-toc-text">类关系图</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#渲染过程"><span class="post-toc-number">2.0.0.3.</span> <span class="post-toc-text">渲染过程</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#渲染说明"><span class="post-toc-number">2.0.0.4.</span> <span class="post-toc-text">渲染说明</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#更新过程"><span class="post-toc-number">2.0.0.5.</span> <span class="post-toc-text">更新过程</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-cesium-源码跟读-数据调度"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">cesium|源码跟读 - cesium的数据调度渲染过程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-04-25 23:41:00" datetime="2020-04-25T15:41:00.000Z"  itemprop="datePublished">2020-04-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>学习源码的时候有一个好的学习方案往往能事半功倍。
+在跟读源码时定下一个学习目标，记录学习过程。
+比如需要了解那个API的初始化过程来作为学习导向。</code></p>
+<p><code>这篇已cesium如何渲染地形和影像为学习导向来研究cesium的数据调度机制</code></p>
+<h3 id="数据调度"><a href="#数据调度" class="headerlink" title="数据调度"></a>数据调度</h3><p>之前讲过cesiumWidget如何初始化的，里边说到场景内的数据会自动做每一帧的循环渲染。<br><img alt="" height="614" src="https://img-blog.csdnimg.cn/20200426132348938.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="714"></p>
+<p>startRenderLoop 开始渲染三维窗口内的对象<br><img alt="" height="269" src="https://img-blog.csdnimg.cn/20200421154631106.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="532"></p>
+<p>通过requestAnimationFrame函数循环渲染，每一帧的结束，就是下一帧的开始</p>
+<p><code>使用requestAnimationFrame创建一个draw循环
+每个动画帧都调用tick回调函数
+最终都会都用scene.render()函数</code><br><img alt="" height="484" src="https://img-blog.csdnimg.cn/20200421155057600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="700"></p>
+<p>其中 地形和影像 都是在globe.beginframe 和 globe.endframe之间完成渲染的<br><img alt="" height="503" src="https://img-blog.csdnimg.cn/20200421161422660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="718"></p>
+<h6 id="调度说明"><a href="#调度说明" class="headerlink" title="调度说明"></a>调度说明</h6><p><code>updateAndExecuteCommands</code> 负责数据的调度，比如哪些Tile需要创建，这些Tile相关的地形数据，以及涉及到的影像数据之间的调度，都是在该函数中维护。但是updateAndExecuteCommands函数只负责管理，也就是他所创建的Tile类只是一个个的Tasks，自己并不负责Tasks内容的实现（数据的加载和维护）。这样，导致架构会有些复杂，因为不是一个流水线的作业方式，所以就需要有状态的维护。但这也是必然的，不仅保证该函数高效，不拖累每一帧的时间消耗，同时因为实时性满足人的要求（帧数能够达到或接近60），每一帧需要的Tile队列可以实时计算，不用考虑时间和状态之间的关系。</p>
+<p>可以这样理解，<code>updateAndExecuteCommands</code>是一个管理者，只说不做，与之相反，<code>scene.globe.endFrame</code>中，会对该帧所涉及的GlobeTile的下载，解析等进行处理</p>
+<p>简单而言，<code>updateAndExecuteCommands</code>负责上面看得见的事情，根据当前这一帧相机的状态，先打一个黄色的网格，然后检查当前状态下，这些网格里面的地形和影像数据是否都已经准备好了，如果准备好，每一个Tile就创建一个<code>DrawCommand</code>来渲染，把这个球画出来。如果没准备好也不管，反正有<code>endFrame</code>函数负责，各司其职</p>
+<img alt="" height="335" src="https://img-blog.csdnimg.cn/2020042116161095.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="486">
+
+<p>  <code>scene.globe.endFrame</code>就按照吩咐来准备每一个Tile的数据，全是看不见的工作，默默的奉献自己的青春。这里，Promise，Worker等技术都会使用，通过异步和多线程的方式，来缓解每一帧的负担，而在主线程下，主要是数据状态的维护。如果一个Tile的数据解析完成，则该<code>GlobeTile</code>的状态更新为<code>renderable</code>（可渲染），<code>done</code>（已完成）。</p>
+<h6 id="类关系图"><a href="#类关系图" class="headerlink" title="类关系图"></a>类关系图</h6><p>  在这个过程中，类的关系大致如下：</p>
+<p>  网格按照经纬度来划分的，每一个网格对应一个<code>QuadtreeTile</code>四叉树类，<code>其中有一个GlobeSurfaceTile</code>，里面保存地形数据<code>TileTerrain</code>和影像数据<code>TileImagery</code>。当前相机下需要多个网格，就需要多个<code>QuadtreeTile</code>，该队列保存在<code>QuadtreePrimitive</code>，<code>QuadtreePrimitive</code>统一维护所有Tile的管理，具体是通过<code>GlobeSurfaceTileProvider</code>来实现逻辑操作，而<code>QuadtreePrimitive</code>上面包了一个<code>Globe</code>和<code>Scene</code></p>
+  <img alt="" height="194" src="https://img-blog.csdnimg.cn/20200421162355704.png" width="405">
+
+<p> <code>初始化globe 创建QuadtreePrimitive数据队列对象， 该对象会实例化 一个GlobeSurfaceTileProvider将地形和影像数据分别存储进去</code></p>
+   <img alt="" height="590" src="https://img-blog.csdnimg.cn/2020042116225527.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="733">
+
+
+<h6 id="渲染过程"><a href="#渲染过程" class="headerlink" title="渲染过程"></a>渲染过程</h6><p>   地形和影像的渲染是通过updateAndExecuteCommands完成数据调度</p>
+<p>   关系图</p>
+   <img alt="" height="230" src="https://img-blog.csdnimg.cn/20200421162537858.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="604">
+
+<p>   源码跟读</p>
+<pre><code>scene.updateAndExecuteCommands 开始执行 </code></pre>   <img alt="" height="302" src="https://img-blog.csdnimg.cn/20200421162930976.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="525">
+
+<pre><code>scene.executeCommandsInViewport 方法</code></pre>  <img alt="" height="254" src="https://img-blog.csdnimg.cn/20200426141531331.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="755">
+
+<pre><code>执行 updateAndRenderPrimitives</code></pre>   <img alt="" height="302" src="https://img-blog.csdnimg.cn/20200421162930976.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="525">
+
+<pre><code>调用globe的update函数</code></pre>   <img alt="" height="277" src="https://img-blog.csdnimg.cn/20200421163958958.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="618">
+
+<p>   globe.update调用数据队列的update<br>   <img alt="" height="227" src="https://img-blog.csdnimg.cn/2020042116402677.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="756"></p>
+<pre><code>最终调用GlobeSurfaceTileProvider 实现逻辑</code></pre>   <img alt="" height="501" src="https://img-blog.csdnimg.cn/20200421164837303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="756">
+
+   <img alt="" height="602" src="https://img-blog.csdnimg.cn/20200421165258564.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="756">
+
+   <img alt="" height="496" src="https://img-blog.csdnimg.cn/20200421165839696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="756">
+
+<h6 id="渲染说明"><a href="#渲染说明" class="headerlink" title="渲染说明"></a>渲染说明</h6><p>   在QuadtreePrimitive的update中，调用selectTilesForRendering来或许当前需要创建的网格，其中，在第一帧会把全球分为两块Tile：</p>
+   <img alt="" height="302" src="https://img-blog.csdnimg.cn/20200421170017504.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="605">
+
+<p>   而在queueChildrenLoadAndDetermineIfChildrenAreAllRenderable函数中，基于这两个Tile来做四叉树剖分，也就是所有的后来的QuadtreeTile都能够上溯到这两个Tile之一：</p>
+   <img alt="" height="306" src="https://img-blog.csdnimg.cn/20200421172000540.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="604">
+
+<p>   创建的GlobeSurfaceTile都会存储到更新队列中，等待数据下载和解析的过程，而如果当前帧中，存在准备好的，已经可以渲染的GlobeSurfaceTile，则调用addDrawCommandsForTile，构造成VBO，最终通过WebGL实现渲染。</p>
+<h6 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h6>   <img alt="" height="715" src="https://img-blog.csdnimg.cn/20200421172046613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="601">
+
+<p>   用大佬的原文解释:</p>
+  <img alt="" height="357" src="https://img-blog.csdnimg.cn/20200426142646944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="750">
+
+
+
+<p>  参考博文 : <code>https://www.cnblogs.com/fuckgiser/p/5744509.html</code></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-04-26T06:33:04.460Z" itemprop="dateUpdated">2020-04-26 14:33:04</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/" target="_blank" rel="external">http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="Mr.Zhang">
+            Mr.Zhang
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cesium/" rel="tag">Cesium</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/&title=《cesium|源码跟读 - cesium的数据调度渲染过程》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/&title=《cesium|源码跟读 - cesium的数据调度渲染过程》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cesium|源码跟读 - cesium的数据调度渲染过程》 — 一只咸鱼&url=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-CesiumWidget/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">cesium|源码跟读 - CesiumWidget</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Mr.Zhang &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/&title=《cesium|源码跟读 - cesium的数据调度渲染过程》 — 一只咸鱼&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/&title=《cesium|源码跟读 - cesium的数据调度渲染过程》 — 一只咸鱼&source=分享各种福利和姿势..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cesium|源码跟读 - cesium的数据调度渲染过程》 — 一只咸鱼&url=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2020/04/25/cesium-%E6%BA%90%E7%A0%81%E8%B7%9F%E8%AF%BB-%E6%95%B0%E6%8D%AE%E8%B0%83%E5%BA%A6/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
