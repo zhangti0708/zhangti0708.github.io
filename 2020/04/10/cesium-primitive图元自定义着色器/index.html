@@ -28,13 +28,13 @@
 <meta property="og:site_name" content="一只咸鱼">
 <meta property="og:description" content="前言Primitive是cesium核心api之一，与entity方式绘制方式(基于数据)不同，primitive更接近渲染引擎底层。entity适合以数据绘制实体，而primitive更适合图形学对有webgl经验的更亲和。primitive绘制的图形比entity添加的实体性能更好，webgl特性使primitive能绘制更多样式的图形。 对entity和primitive与scene之间的关">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200410174714680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200527163017621.gif">
 <meta property="article:published_time" content="2020-04-10T07:21:00.000Z">
-<meta property="article:modified_time" content="2020-04-12T07:19:17.833Z">
+<meta property="article:modified_time" content="2020-05-28T03:57:26.317Z">
 <meta property="article:author" content="Mr.Zhang">
 <meta property="article:tag" content="Cesium">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200410174714680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200527163017621.gif">
     
         <link rel="alternate" type="application/atom+xml" title="一只咸鱼" href="/atom.xml">
     
@@ -240,7 +240,7 @@
 <h5 id="创建Primitive"><a href="#创建Primitive" class="headerlink" title="创建Primitive"></a>创建Primitive</h5><p>创建自定义primitive图元，实现动态效果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;添加Primitive</span><br><span class="line"> var radar &#x3D; viewer.scene.primitives.add(</span><br><span class="line">  new Cesium.Primitive(&#123;</span><br><span class="line">     geometryInstances: [redCone],</span><br><span class="line">     appearance：appearance</span><br><span class="line"> &#125;));</span><br><span class="line"> </span><br><span class="line"> &#x2F;&#x2F;动态修改雷达材质中的offset变量，从而实现动态效果。</span><br><span class="line"> viewer.scene.preUpdate.addEventListener(function() &#123;</span><br><span class="line">     var offset &#x3D; radar.appearance.material.uniforms.offset;</span><br><span class="line">         offset -&#x3D; 0.001;</span><br><span class="line">         if (offset &gt; 1.0) &#123;</span><br><span class="line">             offset &#x3D; 0.0;</span><br><span class="line">         &#125;</span><br><span class="line">     radar.appearance.material.uniforms.offset &#x3D; offset;</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
 
-<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><img alt="" height="419" src="https://img-blog.csdnimg.cn/20200410174714680.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDkwMjUyNw==,size_16,color_FFFFFF,t_70" width="500">
+<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><img alt="" height="475" src="https://img-blog.csdnimg.cn/20200527163017621.gif" width="700">
         </div>
 
         <blockquote class="post-copyright">
@@ -248,7 +248,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-04-12T07:19:17.833Z" itemprop="dateUpdated">2020-04-12 15:19:17</time>
+    最后更新时间：<time datetime="2020-05-28T03:57:26.317Z" itemprop="dateUpdated">2020-05-28 11:57:26</time>
 </span><br>
 
 
